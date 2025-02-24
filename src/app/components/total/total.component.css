@@ -1,0 +1,44 @@
+.total-cards-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5px;
+}
+
+.selected-account {
+  margin: 0;
+  font-size: 32px;
+}
+
+.card {
+  width: 25%;
+  padding: 10px;
+  padding-left: 15px;
+  border-radius: 10px;
+  background: white;
+}
+
+.total {
+  margin: 0;
+  font-size: 22px;
+  color: gray
+}
+
+.icon-number-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px
+}
+
+.icon {
+  width: 35px;
+  height: 35px;
+}
+
+.number {
+  margin: 0;
+  font-size: 30px;
+  color: black
+}

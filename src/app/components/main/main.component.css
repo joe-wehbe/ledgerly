@@ -1,4 +1,22 @@
-.layout {
+.layout-grid {
   display: grid;
   grid-template-columns: 215px 1fr;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  height: 100%;
+  padding: 15px;
+}
+
+.left-column, .right-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: black;
+}
+
+.right-column{
+  border-left: 1px solid #AFAFAF;
 }
