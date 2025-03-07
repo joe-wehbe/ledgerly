@@ -49,32 +49,3 @@
   cursor: pointer;
   transform: scale(1.1);
 }
-
-@media (max-width: 768px) {
-  .header-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .logo-name-container {
-    justify-content: center;
-    border-right: none;
-  }
-
-  .header {
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  .buttons {
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .dark-mode-container {
-    justify-content: center;
-    padding: 0;
-  }
-}

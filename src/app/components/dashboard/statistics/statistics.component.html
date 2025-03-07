@@ -1,0 +1,19 @@
+<div class="card">
+  <p class="card-name">Statistics</p>
+  <div class="chart-container">
+    <ngx-charts-line-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="data"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="true"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      xAxisLabel="Month"
+      yAxisLabel="Amount"
+      [autoScale]="true">
+    </ngx-charts-line-chart>
+  </div>
+  
+</div>

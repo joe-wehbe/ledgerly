@@ -1,0 +1,20 @@
+.card {
+  padding-top: 10px;
+  padding-left: 10px;
+  border-radius: 10px;
+  height: 100%;
+  background: white;
+}
+
+.card-name {
+  margin: 5px;
+  /* margin-left: 5px; */
+  font-size: 20px;
+}
+
+.chart-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

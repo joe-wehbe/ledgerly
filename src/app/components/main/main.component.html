@@ -6,9 +6,15 @@
     <app-header></app-header>
     <div class="content-grid">
       <div class="left-column">
-        <app-total></app-total>
+          <app-total class="total-component"></app-total>
+          <app-statistics class="stats-component"></app-statistics>
+          <app-transactions class="trans-component"></app-transactions>
       </div>
-      <div class="right-column">Right Column (30%)</div>
+      <div class="right-column">
+        <app-accounts class="accounts-component"></app-accounts>
+        <app-quick-transfer class="transfer-component"></app-quick-transfer>
+        <app-add-note class="add-note-component"></app-add-note>
+      </div>
     </div>
   </div>
 </div>

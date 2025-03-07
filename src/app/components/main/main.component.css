@@ -6,17 +6,23 @@
 .content-grid {
   display: grid;
   grid-template-columns: 70% 30%;
+  gap: 10px;
   height: 100%;
-  padding: 15px;
+  padding: 10px;
+  padding-right: 20px;
 }
 
 .left-column, .right-column {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  color: black;
+  gap: 10px;
+  /* height: 100%; */
 }
 
-.right-column{
-  border-left: 1px solid #AFAFAF;
+.accounts-component, .transfer-component {
+  flex: 0.320;
+}
+
+.add-note-component {
+  flex: 0.2;
 }
