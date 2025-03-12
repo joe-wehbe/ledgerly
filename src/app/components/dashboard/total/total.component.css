@@ -42,3 +42,9 @@
   font-size: 2em;
   color: black
 }
+
+@media (max-width: 1300px) {
+  .selected-account {
+    display: none;
+  }
+}
