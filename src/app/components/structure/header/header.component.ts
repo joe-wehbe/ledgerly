@@ -21,10 +21,6 @@ export class HeaderComponent {
   }
 
   private applyTheme(): void {
-    if (this.isDarkMode) {
-      document.body.classList.add('dark-theme');
-    } else {
-      document.body.classList.remove('dark-theme');
-    }
+    this.isDarkMode ? document.body.classList.add('dark-theme') : document.body.classList.remove('dark-theme');
   }
 }

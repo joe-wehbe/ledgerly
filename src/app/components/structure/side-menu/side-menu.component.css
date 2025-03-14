@@ -1,5 +1,5 @@
 .side-menu-container {
-  height: 100vh;
+  height: 98vh;
   background-color: var(--header-menu-background);
   border-right: 1px solid var(--border-lines-color);
 }
