@@ -1,8 +1,6 @@
 .card {
-  /* margin-top: 40px; */
   padding: 10px;
   border-radius: 10px;
-  /* height: 80%; */
   background: var(--cards-background);
 }
 
@@ -17,44 +15,42 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-top: auto;
 }
 
-.card-textarea {
+.textarea {
   width: 95%;
   height: 100px;
-  border: 1px solid var(--border-lines-color);
+  padding: 10px;
   border-radius: 10px;
   font-size: 16px;
-  padding: 10px;
   resize: none;
   outline: none;
+  border: 1px solid var(--border-lines-color);
+  color: var(--text-color);
   background: var(--input-background);
   transition: border 0.3s ease-in-out;
-  color: var(--text-color);
 }
 
-.card-textarea:focus {
+.textarea:focus {
   border: 1px solid #178545;
 }
 
-.card-button {
+.textarea::placeholder {
+  color: var(--gray-text);
+}
+
+.button {
   width: 120px;
-  background: #28a745;
-  color: white;
-  margin-top: 8px;
-  border: none;
   padding: 10px;
+  margin-top: 8px;
   border-radius: 5px;
   font-size: 16px;
+  border: none;
   cursor: pointer;
+  color: white;
+  background: #28a745;
 }
 
-.card-button:hover {
+.button:hover {
   background: #1da364;
-}
-
-.card-textarea::placeholder {
-  color: var(--gray-text);
-  opacity: 1;
 }

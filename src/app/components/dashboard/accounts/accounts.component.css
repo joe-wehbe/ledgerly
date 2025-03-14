@@ -4,11 +4,6 @@
   background: var(--cards-background);
 }
 
-.card-name {
-  margin: 0;
-  font-size: 20px;
-}
-
 .upper-container {
   display: flex;
   align-items: center;
@@ -16,12 +11,24 @@
   margin-bottom: 10px;
 }
 
-.view-all {
+.card-name {
+  margin: 0;
+  font-size: 20px;
+}
+
+.select-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.select-all, .view-all {
   margin: 0;
   color: var(--gray-text)
 }
 
-.view-all:hover {
+.select-all:hover, .view-all:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
@@ -34,14 +41,14 @@
 
 .account {
   padding: 10px;
-  background: var(--internal-cards-background);
-  border-radius: 5px;
   height: 60px;
+  border-radius: 5px;
+  background: var(--internal-cards-background);
 }
 
 .account:hover {
-  transform: scale(1.04);
   cursor: pointer;
+  transform: scale(1.04);
 }
 
 .account-name {
@@ -50,8 +57,7 @@
 }
 
 .amount {
-  font-size: 1.7em;
-  /* color: black; */
-  text-align: center;
   margin: 5px;
+  text-align: center;
+  font-size: 1.7em;
 }

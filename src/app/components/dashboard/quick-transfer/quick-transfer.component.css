@@ -1,8 +1,6 @@
 .card {
-  /* margin-top: 20px; */
   padding: 10px;
   border-radius: 10px;
-  /* height: 100%; */
   background: var(--cards-background);
 }
 
@@ -22,27 +20,10 @@ p {
   margin: 8px;
 }
 
-.card-button {
-  width: 120px;
-  background: #28a745;
-  color: white;
-  margin-top: 15px;
-  margin-bottom: 6px;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.card-button:hover {
-  background: #1da364;
-}
-
 .input-container {
-  position: relative;
   display: flex;
   align-items: center;
+  position: relative;
   width: 100%;
 }
 
@@ -55,44 +36,51 @@ p {
 
 input {
   width: 100%;
-  border: 1px solid var(--border-lines-color);
-  border-radius: 10px;
-  font-size: 16px;
   padding: 5px 10px 5px 25px;
-  outline: none;
-  background: var(--input-background);
-  transition: border 0.3s ease-in-out;
-  text-align: center;
-  color: var(--text-color);
-}
-
-input::placeholder {
-  color: var(--gray-text);
-}
-
-
-select {
-  width: 98%;
-  border: 1px solid var(--border-lines-color);
   border-radius: 10px;
   font-size: 16px;
-  padding: 5px;
+  text-align: center;
   outline: none;
-  background: var(--input-background);
-  transition: border 0.3s ease-in-out;
-  margin: 0;
   color: var(--text-color);
+  background: var(--input-background);
+  border: 1px solid var(--border-lines-color);
+  transition: border 0.3s ease-in-out;
 }
 
 input::placeholder {
   color: var(--gray-text);
-}
-
-select {
-  width: 100%;
 }
 
 input:focus, select:focus {
   border: 1px solid #178545;
 }
 
+select {
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+  color: var(--text-color);
+  background: var(--input-background);
+  border: 1px solid var(--border-lines-color);
+  transition: border 0.3s ease-in-out;
+}
+
+.button {
+  width: 120px;
+  padding: 10px;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background: #28a745;
+}
+
+.button:hover {
+  background: #1da364;
+}

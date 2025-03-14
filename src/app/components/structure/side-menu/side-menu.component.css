@@ -17,8 +17,8 @@
 }
 
 .name {
-  font-size: 24px;
   margin: 20px;
+  font-size: 24px;
 }
 
 .menu-content-container {
@@ -48,13 +48,13 @@
 }
 
 .icon {
+  margin: 0;
   width: 25px;
   height: 25px;
-  margin: 0;
 }
 
 .text {
-  font-size: 20px;
   margin: 0;
+  font-size: 20px;
   color: var(--gray-text);
 }

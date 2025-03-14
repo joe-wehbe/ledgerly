@@ -12,20 +12,20 @@
   justify-content: space-between;
 }
 
-.legend-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+p {
+  margin: 5px;
+  font-size: 16px;
 }
 
 .card-name {
   font-size: 20px;
 }
 
-p {
-  margin: 5px;
-  font-size: 16px;
+.legend-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .income-container, .expenses-container {
@@ -48,15 +48,13 @@ p {
   background-color: #dc3545;
 }
 
-
 .chart-container {
-  width: 98%;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 98%;
 }
 
 ::ng-deep .ngx-charts text {
   fill: var(--text-color);
 }
-

@@ -40,7 +40,6 @@
 .number {
   margin: 0;
   font-size: 2em;
-  /* color: black */
 }
 
 @media (max-width: 1300px) {

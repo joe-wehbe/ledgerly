@@ -1,19 +1,19 @@
 .card {
+  height: 100%;
   padding: 10px;
   border-radius: 10px;
-  height: 100%;
   background: var(--cards-background);
-}
-
-.card-name {
-  margin: 0;
-  font-size: 20px;
 }
 
 .upper-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.card-name {
+  margin: 0;
+  font-size: 20px;
 }
 
 .view-all {
