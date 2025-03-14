@@ -3,20 +3,6 @@
   grid-template-columns: 215px 1fr;
 }
 
-.content-grid {
-  display: grid;
-  grid-template-columns: 70% 30%;
-  gap: 10px;
-  padding: 10px;
-  padding-right: 20px;
-}
-
-.left-column, .right-column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
 @media (max-width: 1200px) {
   .layout-grid {
     grid-template-columns: 1fr;
@@ -28,19 +14,5 @@
 
   .right-side-container {
     width: 100%;
-  }
-}
-
-@media (max-width: 1000px) {
-  .content-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .accounts-component {
-    margin-top: 20px;
-  }
-
-  .left-column {
-    width: 98%;
   }
 }

@@ -5,23 +5,31 @@
   </div>
   <div class="menu-content-container">
     <div class="items">
-      <div class="dashboard-item">
-        <img class="icon" src="icons/dashboard.png" alt="Dashboard"><img>
-        <p class="text">Dashboard</p>
-      </div>
-      <div class="dashboard-item">
-        <img class="icon" src="icons/statistics.png" alt="Stats"><img>
-        <p class="text">Statistics</p>
-      </div>
-      <div class="dashboard-item">
-        <img class="icon" src="icons/transaction.png" alt="Transactions"><img>
-        <p class="text">Transactions</p>
-      </div>
-      <div class="dashboard-item">
-        <img class="icon" src="icons/accounts.png" alt="Accounts"><img>
-        <p class="text">Accounts</p>
-      </div>
-      <div class="dashboard-item">
+      <a routerLink="dashboard" routerLinkActive="selected">
+        <div class="item">
+          <img class="icon" src="icons/dashboard.png" alt="Dashboard">
+          <p class="text">Dashboard</p>
+        </div>
+      </a>      
+      <a routerLink="statistics" routerLinkActive="selected">
+        <div class="item">
+          <img class="icon" src="icons/statistics.png" alt="Stats"><img>
+          <p class="text">Statistics</p>
+        </div>
+      </a>
+      <a routerLink="transactions" routerLinkActive="selected">
+        <div class="item">
+          <img class="icon" src="icons/transaction.png" alt="Transactions"><img>
+          <p class="text">Transactions</p>
+        </div>
+      </a>
+      <a routerLink="accounts" routerLinkActive="selected">
+        <div class="item">
+          <img class="icon" src="icons/accounts.png" alt="Accounts"><img>
+          <p class="text">Accounts</p>
+        </div>
+      </a>
+      <div class="item">
         <img class="icon" src="icons/notes.png" alt="Notes"><img>
         <p class="text">Notes</p>
       </div>

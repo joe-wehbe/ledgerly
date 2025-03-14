@@ -16,6 +16,10 @@
   font-size: 20px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .view-all {
   margin: 0;
   color: var(--gray-text)

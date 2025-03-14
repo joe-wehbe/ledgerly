@@ -37,12 +37,28 @@
   height: 35%;
 }
 
-.dashboard-item {
+a {
+  text-decoration: none;
+}
+
+a.selected .text {
+  color: black;
+}
+
+a.selected .icon {
+  filter: brightness(0);
+}
+
+.selected-route{
+  background-color: red;
+}
+
+.item {
   display: flex;
   gap: 5px
 }
 
-.dashboard-item:hover {
+.item:hover {
   cursor: pointer;
   transform: scale(1.1);
 }

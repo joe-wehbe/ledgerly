@@ -33,6 +33,10 @@
   transform: scale(1.05);
 }
 
+a {
+  text-decoration: none;
+}
+
 .accounts-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

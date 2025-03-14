@@ -32,7 +32,7 @@
 }
 
 .textarea:focus {
-  border: 1px solid #178545;
+  border: 1px solid #28a745;
 }
 
 .textarea::placeholder {
@@ -52,5 +52,5 @@
 }
 
 .button:hover {
-  background: #1da364;
+  background: #549964;
 }

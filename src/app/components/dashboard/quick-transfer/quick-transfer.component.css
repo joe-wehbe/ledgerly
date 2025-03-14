@@ -52,7 +52,7 @@ input::placeholder {
 }
 
 input:focus, select:focus {
-  border: 1px solid #178545;
+  border: 1px solid #28a745;
 }
 
 select {
@@ -82,5 +82,5 @@ select {
 }
 
 .button:hover {
-  background: #1da364;
+  background: #549964;
 }
