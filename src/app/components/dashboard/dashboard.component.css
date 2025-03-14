@@ -12,6 +12,7 @@
 
 @media (max-width: 1000px) {
   .content-grid {
+    display: grid;
     grid-template-columns: 1fr;
   }
 
@@ -19,7 +20,7 @@
     margin-top: 20px;
   }
 
-  .left-column {
-    width: 98%;
+  .left-column, .right-column {
+    width: 99.5%;
   }
 }
