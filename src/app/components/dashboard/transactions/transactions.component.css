@@ -30,10 +30,39 @@ a {
   transform: scale(1.05);
 }
 
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 282px;
+  width: 100%;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #c4c4c4;
+  animation: spin 1s linear infinite;
+}
+
 .transactions-table {
   width: 100%;
   margin-top: 10px;
   border-collapse: collapse;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 th {

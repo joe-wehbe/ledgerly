@@ -13,11 +13,12 @@
     </div>
   </div>
   <div class="chart-container">
-    <div *ngIf="isLoading" class="loading-container">
-      <div class="spinner"></div>
-    </div>  
-    <ngx-charts-line-chart
-      *ngIf="!isLoading"
+    @if (isLoading) {
+      <div class="loading-container">
+        <div class="spinner"></div>
+      </div>  
+    } @else {
+      <ngx-charts-line-chart
       [view]="view"
       [scheme]="colorScheme"
       [results]="data"
@@ -28,6 +29,7 @@
       xAxisLabel="Month"
       yAxisLabel="Amount"
       [autoScale]="true">
-    </ngx-charts-line-chart>
+      </ngx-charts-line-chart>
+    }
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgxChartsModule, Color, ScaleType } from '@swimlane/ngx-charts';
 
 @Component({
@@ -7,7 +7,7 @@ import { NgxChartsModule, Color, ScaleType } from '@swimlane/ngx-charts';
   templateUrl: './statistics.component.html',
   styleUrl: './statistics.component.css'
 })
-export class StatisticsComponent {
+export class StatisticsComponent implements OnInit{
   isLoading: boolean = true;
   view: [number, number] = [1000, 360];
 

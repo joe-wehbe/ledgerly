@@ -69,7 +69,7 @@
   margin-left: 20px;
 }
 
-.buttons p:hover, .theme:hover {
+.buttons-container p:hover, .theme:hover {
   cursor: pointer;
   transform: scale(1.1);
 }

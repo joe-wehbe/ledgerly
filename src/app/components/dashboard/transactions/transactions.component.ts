@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -7,6 +7,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })
-export class TransactionsComponent {
+export class TransactionsComponent implements OnInit {
+  isLoading = true;
 
+  ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+  }
 }
