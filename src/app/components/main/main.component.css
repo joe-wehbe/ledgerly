@@ -3,6 +3,10 @@
   grid-template-columns: 215px 1fr;
 }
 
+.router-container {
+  margin: 10px;
+}
+
 @media (max-width: 1200px) {
   .layout-grid {
     grid-template-columns: 1fr;

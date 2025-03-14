@@ -8,11 +8,15 @@ import { NgxChartsModule, Color, ScaleType } from '@swimlane/ngx-charts';
   styleUrl: './statistics.component.css'
 })
 export class StatisticsComponent {
+  isLoading: boolean = true;
   view: [number, number] = [1000, 360];
 
   ngOnInit() {
-    this.updateChartSize();
-    window.addEventListener('resize', this.updateChartSize.bind(this));
+    setTimeout(() => {
+      this.isLoading = false;
+      this.updateChartSize();
+      window.addEventListener('resize', this.updateChartSize.bind(this));
+    }, 500);
   }
 
   updateChartSize() {
