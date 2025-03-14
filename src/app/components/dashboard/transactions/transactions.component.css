@@ -10,6 +10,22 @@
   font-size: 20px;
 }
 
+.upper-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.view-all {
+  margin: 0;
+  color: var(--gray-text)
+}
+
+.view-all:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
 .transactions-table {
   width: 100%;
   margin-top: 10px;

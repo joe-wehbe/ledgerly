@@ -1,18 +1,56 @@
 .card {
   padding-top: 10px;
   padding-left: 10px;
+  padding-right: 10px;
   border-radius: 10px;
   background: var(--cards-background);
 }
 
+.upper-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.legend-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .card-name {
-  margin: 5px;
-  /* margin-left: 5px; */
   font-size: 20px;
 }
 
+p {
+  margin: 5px;
+  font-size: 16px;
+}
+
+.income-container, .expenses-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.income-circle, .expenses-circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.income-circle {
+  background-color: #28a745;
+}
+
+.expenses-circle {
+  background-color: #dc3545;
+}
+
+
 .chart-container {
-  width: 100%;
+  width: 98%;
   display: flex;
   justify-content: center;
   align-items: center;
