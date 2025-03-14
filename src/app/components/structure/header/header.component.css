@@ -13,6 +13,30 @@
   margin: 13px;
 }
 
+.left-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 1200px) {
+  .menu-toggle-container {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .menu-toggle-container:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+  
+  .menu-toggle {
+    width: 25px;
+    height: 25px;
+  }
+}
+
 .welcome-container{
   margin-left: 20px;
 }
@@ -28,13 +52,13 @@
   color: var(--gray-text);
 }
 
-.buttons {
+.buttons-container {
   display: flex;
   justify-content: space-evenly;
   gap: 50px;
 }
 
-.buttons p {
+.buttons-container p {
   margin: 0;
   font-size: 20px;
 }

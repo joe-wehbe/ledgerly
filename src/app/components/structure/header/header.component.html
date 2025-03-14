@@ -1,10 +1,15 @@
 <div class="header-container">
   <div class="header"> 
-    <div class="welcome-container">
-      <p class="welcome">Welcome</p>
-      <p class="statement">Here's what's happening with your finance today</p>
+    <div class="left-container">
+      <div class="menu-toggle-container" (click)="toggleSideMenu()">
+        <img src="icons/menu-toggle.png" class="menu-toggle" alt="toggle">
+      </div>
+      <div class="welcome-container">
+        <p class="welcome">Welcome</p>
+        <p class="statement">Here's what's happening with your finance today</p>
+      </div>
     </div>
-    <div class="buttons">
+    <div class="buttons-container">
       <p>Deposit</p>
       <p>Withdraw</p>
       <p>Transfer</p>

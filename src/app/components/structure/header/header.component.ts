@@ -23,4 +23,8 @@ export class HeaderComponent {
   private applyTheme(): void {
     this.isDarkMode ? document.body.classList.add('dark-theme') : document.body.classList.remove('dark-theme');
   }
+
+  toggleSideMenu() {
+    
+  }
 }
