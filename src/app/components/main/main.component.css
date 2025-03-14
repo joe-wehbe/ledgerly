@@ -7,7 +7,6 @@
   display: grid;
   grid-template-columns: 70% 30%;
   gap: 10px;
-  background-color: #E2E2E2;
   padding: 10px;
   padding-right: 20px;
 }

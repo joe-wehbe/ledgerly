@@ -1,13 +1,13 @@
 .side-menu-container {
   height: 100vh;
-  background-color: white;
-  border-right: 1px solid #AFAFAF;
+  background-color: var(--header-menu-background);
+  border-right: 1px solid var(--border-lines-color);
 }
 
 .logo-name-container {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #AFAFAF;
+  border-bottom: 1px solid var(--border-lines-color);
 }
 
 .logo {
@@ -56,5 +56,5 @@
 .text {
   font-size: 20px;
   margin: 0;
-  color: gray
+  color: var(--gray-text);
 }

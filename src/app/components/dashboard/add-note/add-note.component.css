@@ -3,7 +3,7 @@
   padding: 10px;
   border-radius: 10px;
   /* height: 80%; */
-  background: white;
+  background: var(--cards-background);
 }
 
 .card-name {
@@ -23,26 +23,26 @@
 .card-textarea {
   width: 95%;
   height: 100px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-lines-color);
   border-radius: 10px;
   font-size: 16px;
   padding: 10px;
   resize: none;
   outline: none;
-  background: #f5f5f5;
+  background: var(--input-background);
   transition: border 0.3s ease-in-out;
+  color: var(--text-color);
 }
 
 .card-textarea:focus {
   border: 1px solid #178545;
-  background: white;
 }
 
 .card-button {
   width: 120px;
-  background: #178545;
+  background: #28a745;
   color: white;
-  margin-top: 15px;
+  margin-top: 8px;
   border: none;
   padding: 10px;
   border-radius: 5px;
@@ -52,4 +52,9 @@
 
 .card-button:hover {
   background: #1da364;
+}
+
+.card-textarea::placeholder {
+  color: var(--gray-text);
+  opacity: 1;
 }
