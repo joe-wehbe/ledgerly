@@ -42,11 +42,11 @@ a {
 }
 
 a.selected .text {
-  color: black;
+  color: var(--clicked-menu-button);
 }
 
 a.selected .icon {
-  filter: brightness(0);
+  filter: var(--clicked-menu-icon);
 }
 
 .selected-route{

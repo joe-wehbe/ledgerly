@@ -34,11 +34,18 @@
   .menu-toggle {
     width: 25px;
     height: 25px;
+    filter: var(--clicked-menu-icon);
   }
 }
 
 .welcome-container{
   margin-left: 20px;
+}
+
+@media (max-width: 600px) {
+  .welcome-container {
+    display: none;
+  }
 }
 
 .welcome {
