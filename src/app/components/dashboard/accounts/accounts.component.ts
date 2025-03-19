@@ -8,5 +8,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './accounts.component.css'
 })
 export class AccountsComponent {
+  isLoading = true;
 
+  ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+  }
 }

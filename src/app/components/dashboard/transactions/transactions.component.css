@@ -47,11 +47,9 @@ a {
   animation: spin 1s linear infinite;
 }
 
-.transactions-table {
-  width: 100%;
-  margin-top: 10px;
-  border-collapse: collapse;
-  animation: fadeIn 0.5s ease-in-out;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @keyframes fadeIn {
@@ -63,6 +61,13 @@ a {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.transactions-table {
+  width: 100%;
+  margin-top: 10px;
+  border-collapse: collapse;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 th {

@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './total.component.css'
 })
 export class TotalComponent {
+  isLoading = true;
 
+  ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+  }
 }
