@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MenuToggleService } from '../../../services/menu-toggle/menu-toggle.service';
+import { MenuToggleService } from '../../../services/menu-toggle.service';
 
 @Component({
   standalone: true,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MenuToggleService } from '../../../services/menu-toggle/menu-toggle.service';
+import { MenuToggleService } from '../../../services/menu-toggle.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -12,6 +12,8 @@ export class SideMenuComponent {
   constructor(private menuToggleService: MenuToggleService) {}
 
   toggleSideMenu() {
-    this.menuToggleService.toggleMenu();
+    if (window.innerWidth < 1200) {
+      this.menuToggleService.toggleMenu();
+    }
   }
 }
