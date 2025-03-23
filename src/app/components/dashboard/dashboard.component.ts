@@ -24,6 +24,8 @@ export class DashboardComponent {
   selectedAccount: Account | null = null;
 
   updateSelectedAccount(account: Account | null) {
-    this.selectedAccount = account;
+    setTimeout(() => {
+      this.selectedAccount = account;
+    });
   }
 }

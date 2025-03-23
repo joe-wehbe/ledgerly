@@ -15,8 +15,8 @@
 .dark-theme {
   --background-color: #000000;
   --text-color: #ffffff;
-  --header-menu-background: #272727;
-  --cards-background: #272727;
+  --header-menu-background: #181818;
+  --cards-background: #181818;
   --internal-cards-background: rgb(68, 68, 68);
   --border-lines-color: #757575;
   --input-background: rgb(68, 68, 68);
