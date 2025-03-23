@@ -1,5 +1,5 @@
 <div class="total-cards-container">
-  <p class="selected-account">All Accounts</p>
+  <p class="selected-account">{{ selectedAccount()?.name }}</p>
   <div class="card">
     @if (isLoading) {
       <div class="loading-container">
@@ -9,7 +9,7 @@
       <p class="total">Total Balance</p>
       <div class="icon-number-container">
         <img class="icon" src="icons/balance.png" alt="Balance">
-        <p class="number">$172,000</p>
+        <p class="number">{{ selectedAccount()?.balance | currency }}</p>
       </div>
     }
   </div>
@@ -21,8 +21,8 @@
     } @else {
       <p class="total">Total Income</p>
       <div class="icon-number-container">
-        <img class="icon" src="icons/bounceup.png" alt="Balance">
-        <p class="number">$200,000</p>
+        <img class="icon" src="icons/bounceup.png" alt="Income">
+        <p class="number">{{ selectedAccount()?.income | currency }}</p>
       </div>
     }
   </div>
@@ -34,8 +34,8 @@
     } @else {
       <p class="total">Total Expenses</p>
       <div class="icon-number-container">
-        <img class="icon" src="icons/bouncedown.png" alt="Balance">
-        <p class="number">$18,000</p>
+        <img class="icon" src="icons/bouncedown.png" alt="Expenses">
+        <p class="number">{{ selectedAccount()?.expenses | currency }}</p>
       </div>
     }
   </div>

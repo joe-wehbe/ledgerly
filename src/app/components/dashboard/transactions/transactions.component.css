@@ -93,10 +93,10 @@ td {
 
 .chip-income {
   background-color: #28a745;
-  color: var(--text-color);
+  color: white;
 }
 
 .chip-expense {
   background-color: #dc3545;
-  color: var(--text-color);
+  color: white;
 }

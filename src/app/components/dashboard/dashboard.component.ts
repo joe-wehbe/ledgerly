@@ -5,6 +5,7 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { QuickTransferComponent } from './quick-transfer/quick-transfer.component';
 import { AddNoteComponent } from './add-note/add-note.component';
+import { Account } from '../../models/account.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,5 +21,9 @@ import { AddNoteComponent } from './add-note/add-note.component';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+  selectedAccount: Account | null = null;
 
+  updateSelectedAccount(account: Account | null) {
+    this.selectedAccount = account;
+  }
 }

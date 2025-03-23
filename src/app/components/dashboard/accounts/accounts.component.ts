@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AccountsService } from '../../../services/accounts.service';
 import { Account } from '../../../models/account.model';
@@ -12,9 +12,10 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class AccountsComponent implements OnInit {
   isLoading = true;
+  allSelected = false;
   accounts: Account[] = [];
   selectedId: number | null = null;
-  allSelected = true;
+  @Output() selectedAccount = new EventEmitter<Account>();
 
   constructor(private accountsService: AccountsService) {}
 
@@ -24,20 +25,28 @@ export class AccountsComponent implements OnInit {
     }, 500);
 
     this.accounts = this.accountsService.getAccounts();
+    this.selectAll();
   }
 
   selectAccount(id: number): void {
     this.selectedId = id;
-    this.allSelected = false
+    this.allSelected = false;
+    this.selectedAccount.emit(this.accounts.find(account => account.id === id));
   }
 
   selectAll() {
-    this.allSelected = !this.allSelected;
-    if (!this.allSelected && this.accounts.length > 0) {
-      this.selectedId = this.accounts[0].id;
-    } else {
+    if (!this.allSelected) {
+      this.allSelected = true;
       this.selectedId = null;
+      this.selectedAccount.emit(
+        { 
+          id: 0, 
+          name: "All Accounts", 
+          balance: this.accountsService.getTotalBalance(), 
+          income: this.accountsService.getTotalIncome(), 
+          expenses: this.accountsService.getTotalExpenses(),
+        }
+      )
     }
   }
-  
 }

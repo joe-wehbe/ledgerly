@@ -6,8 +6,7 @@ import { Account } from '../models/account.model';
 })
 export class AccountsService {
 
-  constructor() { 
-  }
+  constructor() { }
 
   getAccounts() {
     const accounts = localStorage.getItem('accounts');
@@ -35,14 +34,35 @@ export class AccountsService {
   }
 
   getTotalBalance() {
+    let totalBalance = 0;
+    let accounts = this.getAccounts();
 
+    for (let i = 0; i < accounts.length; i++) {
+      totalBalance += accounts[i].balance;
+    }
+
+    return totalBalance;
   }
 
   getTotalIncome() {
+    let totalIncome = 0;
+    let accounts = this.getAccounts();
 
+    for (let i = 0; i < accounts.length; i++) {
+      totalIncome += accounts[i].income;
+    }
+
+    return totalIncome;
   }
 
   getTotalExpenses() {
+    let totalExpenses = 0;
+    let accounts = this.getAccounts();
 
+    for (let i = 0; i < accounts.length; i++) {
+      totalExpenses += accounts[i].expenses;
+    }
+
+    return totalExpenses;
   }
 }
