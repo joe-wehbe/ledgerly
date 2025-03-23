@@ -1,6 +1,7 @@
 .card {
   padding: 10px;
   border-radius: 10px;
+  height: 293px;
   background: var(--cards-background);
 }
 
@@ -31,6 +32,14 @@
 .select-all:hover, .view-all:hover {
   cursor: pointer;
   transform: scale(1.05);
+}
+
+.all-selected {
+  color: green;
+}
+
+.select-all:focus{
+  color: green;
 }
 
 a {
@@ -82,11 +91,16 @@ a {
   height: 60px;
   border-radius: 5px;
   background: var(--internal-cards-background);
+  border: 2px solid transparent;
 }
 
 .account:hover {
   cursor: pointer;
   transform: scale(1.04);
+}
+
+.account.selected {
+  border: 1px solid #28a745;
 }
 
 .account-name {

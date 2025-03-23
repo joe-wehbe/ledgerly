@@ -2,7 +2,7 @@
   <div class="upper-container">
     <p class="card-name">Accounts</p>
     <div class="select-container">
-      <p class="select-all">Select all</p>
+      <p class="select-all" [class.all-selected]="allSelected" (click)="selectAll()">Select all</p>
       <a routerLink="../accounts">
         <p class="view-all">View all</p>
       </a>
@@ -15,9 +15,9 @@
   } @else {
     <div class="accounts-grid">
       @for (account of accounts; track account.id) {
-        <div class="account">
+        <div class="account" [class.selected]="selectedId === account.id" (click)="selectAccount(account.id)">
           <div class="account-name">{{ account.name }}</div>
-          <div class="amount">{{ account.balance }}</div>
+          <div class="amount">{{ account.balance | currency }} </div>
         </div>
       }
     </div>
