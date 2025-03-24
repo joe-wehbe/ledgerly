@@ -10,6 +10,8 @@ import { MenuToggleService } from '../../../services/menu-toggle.service';
 })
 export class HeaderComponent {
   isDarkMode = localStorage.getItem('dark-theme') === 'enabled';
+  isModalOpen = false;
+  transactionType: 'Deposit' | 'Withdraw' | 'Transfer' = 'Deposit';
 
   constructor(private menuToggleService: MenuToggleService) {
     this.applyTheme();
@@ -27,5 +29,14 @@ export class HeaderComponent {
 
   toggleSideMenu(): void {
     this.menuToggleService.toggleMenu();
+  }
+
+  openModal(type: 'Deposit' | 'Withdraw' | 'Transfer') {
+    this.transactionType = type;
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
   }
 }
