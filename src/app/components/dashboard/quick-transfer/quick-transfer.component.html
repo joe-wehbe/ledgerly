@@ -1,23 +1,25 @@
-<div class="card">
-  <p class="card-name">Quick Transfer</p>
-  <div class="container">
-    <p>Send</p>
-    <div class="input-container">
-      <span class="currency-symbol">$</span>
-      <input type="number" name="amount" placeholder="0.00">
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div class="card">
+    <p class="card-name">Quick Transfer</p>
+    <div class="container">
+      <p>Send</p>
+      <div class="input-container">
+        <span class="currency-symbol">$</span>
+        <input type="number" name="amount" placeholder="0.00" [(ngModel)]="submittedAmount" required>
+      </div>
+      <p>From</p>
+      <select id="from-account" name="fromAccount" [(ngModel)]="fromAccountId" required>
+        @for (account of accounts; track account.id) {
+          <option value="{{ account.id }}">{{ account.name }}</option>
+        }
+      </select>
+      <p>To</p>
+      <select id="to-account" name="toAccount" [(ngModel)]="toAccountId" required>
+        @for (account of accounts; track account.id) {
+          <option value="{{ account.id }}">{{ account.name }}</option>
+        }
+      </select>
+      <button class="button" type="submit">Transfer</button>
     </div>
-    <p>From</p>
-    <select id="from-options" name="options">
-      <option value="option1">Savings</option>
-      <option value="option2">Debit</option>
-      <option value="option3">Wallet</option>
-    </select>
-    <p>To</p>
-    <select id="to-options" name="options">
-      <option value="option1">Savings</option>
-      <option value="option2">Debit</option>
-      <option value="option3">Wallet</option>
-    </select>
-    <button class="button">Transfer</button>
   </div>
-</div>
+</form>

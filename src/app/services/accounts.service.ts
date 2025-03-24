@@ -14,7 +14,7 @@ export class AccountsService {
   }
 
   addAccount(account: Account) {  
-    localStorage.setItem('accounts', this.getAccounts().push(account));
+    // localStorage.setItem('accounts', this.getAccounts().push(account));
   }
 
   deleteAccount() {

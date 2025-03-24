@@ -21,40 +21,42 @@
 </div>
 
 @if (isModalOpen) {
-  <div class="modal-overlay" (click)="closeModal()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <p class="transaction-type">{{ transactionType }}</p>
-
-      @if (transactionType === 'Transfer') {
-        <p class="sentence">transfer from</p>
-        <select id="accounts" name="accounts"> 
-          <option value="option1">Savings</option>
-          <option value="option2">Debit</option>
-          <option value="option3">Wallet</option>
-        </select>
-        <p class="sentence">transfer to</p>
-        <select id="accounts" name="accounts"> 
-          <option value="option1">Savings</option>
-          <option value="option2">Debit</option>
-          <option value="option3">Wallet</option>
-        </select>
-      } @else {
-        <p class="sentence">select account</p>
-        <select id="accounts" name="accounts"> 
-          <option value="option1">Savings</option>
-          <option value="option2">Debit</option>
-          <option value="option3">Wallet</option>
-        </select>
-      }
-      <p class="sentence">enter amount</p>
-      <div class="input-container">
-        <span class="currency-symbol">$</span>
-        <input type="number" name="amount" placeholder="0.00">
-      </div>
-      <div class="modal-buttons">
-        <button class="cancel-button" (click)="closeModal()">Cancel</button>
-        <button class="confirm-button" (click)="closeModal()">Confirm</button>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="modal-overlay" (click)="closeModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <p class="transaction-type">{{ transactionType }}</p>
+  
+        @if (transactionType === 'Transfer') {
+          <p class="sentence">transfer from</p>
+          <select id="accounts" name="accounts"> 
+            @for (account of accounts; track account.id) {
+              <option value="{{ account.id }}">{{ account.name }}</option>
+            }
+          </select>
+          <p class="sentence">transfer to</p>
+          <select id="accounts" name="accounts"> 
+            @for (account of accounts; track account.id) {
+              <option value="{{ account.id }}">{{ account.name }}</option>
+            }
+          </select>
+        } @else {
+          <p class="sentence">select account</p>
+          <select id="accounts" name="accounts"> 
+            @for (account of accounts; track account.id) {
+              <option value="{{ account.id }}">{{ account.name }}</option>
+            }
+          </select>
+        }
+        <p class="sentence">enter amount</p>
+        <div class="input-container">
+          <span class="currency-symbol">$</span>
+          <input type="number" name="amount" placeholder="0.00">
+        </div>
+        <div class="modal-buttons">
+          <button class="cancel-button" (click)="closeModal()">Cancel</button>
+          <button class="confirm-button" (click)="closeModal()">Confirm</button>
+        </div>
       </div>
     </div>
-  </div>
+  </form> 
 }
