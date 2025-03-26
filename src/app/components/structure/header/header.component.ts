@@ -3,6 +3,7 @@ import { MenuToggleService } from '../../../services/menu-toggle.service';
 import { Account } from '../../../models/account.model';
 import { AccountsService } from '../../../services/accounts.service';
 import { FormsModule } from '@angular/forms';
+import { TransactionsService } from '../../../services/transactions.service';
 
 @Component({
   standalone: true,
@@ -16,13 +17,17 @@ export class HeaderComponent implements OnInit {
   isModalOpen = false;
   transactionType: 'Deposit' | 'Withdraw' | 'Transfer' = 'Deposit';
   accounts: Account[] = [];
+  fromAccountId: number | null = null;
+  toAccountId: number | null = null;
+  submittedAmount: number | null = null;
 
-  constructor(private menuToggleService: MenuToggleService, private accountsService: AccountsService) {
+  constructor(private menuToggleService: MenuToggleService, private accountsService: AccountsService, private transactionsService: TransactionsService) {
     this.applyTheme();
   }
 
   ngOnInit() {
     this.accounts = this.accountsService.getAccounts();
+    console.log(localStorage.getItem('accounts'));
   }
 
   toggleTheme(): void {
@@ -46,5 +51,21 @@ export class HeaderComponent implements OnInit {
 
   closeModal() {
     this.isModalOpen = false;
+  }
+
+  onSubmit(form: any) {
+    if (form.valid) {
+      if (this.transactionType === 'Deposit') {
+        this.transactionsService.deposit(this.submittedAmount, this.toAccountId, false);
+      } 
+      else if (this.transactionType === 'Withdraw') {
+        this.transactionsService.withdraw(this.submittedAmount, this.toAccountId, false);
+      } 
+      else {
+        this.transactionsService.transfer(this.submittedAmount, this.fromAccountId, this.toAccountId);
+      }
+      form.reset();   
+      this.closeModal();   
+    }
   }
 }

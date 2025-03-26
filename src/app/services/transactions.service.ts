@@ -12,20 +12,20 @@ export class TransactionsService {
     this.accounts = this.accountsService.getAccounts();
   }
 
-  deposit(amount: number, accountId: number, isTransfer: boolean) {
+  deposit(amount: number | null, accountId: number | null, isTransfer: boolean) {
     const account = this.accounts.find(account => account.id === accountId);
     if (account) {
-      if (!isTransfer) account.income += amount;
-      account.balance += amount;
+      if (!isTransfer) account.income += amount!;
+      account.balance += amount!;
       localStorage.setItem('accounts', JSON.stringify(this.accounts));
     }
   }
 
-  withdraw(amount: number, accountId: number, isTransfer: boolean) {
+  withdraw(amount: number | null, accountId: number | null, isTransfer: boolean) {
     const account = this.accounts.find(account => account.id === accountId);
     if (account) {
-      if (!isTransfer) account.expenses += amount;
-      account.balance -= amount;
+      if (!isTransfer) account.expenses += amount!;
+      account.balance -= amount!;
       localStorage.setItem('accounts', JSON.stringify(this.accounts));
     }
   }

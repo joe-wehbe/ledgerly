@@ -28,20 +28,20 @@
   
         @if (transactionType === 'Transfer') {
           <p class="sentence">transfer from</p>
-          <select id="accounts" name="accounts"> 
+          <select id="accounts" name="accounts" [(ngModel)]="fromAccountId" required> 
             @for (account of accounts; track account.id) {
               <option value="{{ account.id }}">{{ account.name }}</option>
             }
           </select>
           <p class="sentence">transfer to</p>
-          <select id="accounts" name="accounts"> 
+          <select id="accounts" name="accounts" [(ngModel)]="toAccountId" required> 
             @for (account of accounts; track account.id) {
               <option value="{{ account.id }}">{{ account.name }}</option>
             }
           </select>
         } @else {
           <p class="sentence">select account</p>
-          <select id="accounts" name="accounts"> 
+          <select id="accounts" name="accounts" [(ngModel)]="toAccountId" required> 
             @for (account of accounts; track account.id) {
               <option value="{{ account.id }}">{{ account.name }}</option>
             }
@@ -50,11 +50,11 @@
         <p class="sentence">enter amount</p>
         <div class="input-container">
           <span class="currency-symbol">$</span>
-          <input type="number" name="amount" placeholder="0.00">
+          <input type="number" name="amount" placeholder="0.00" [(ngModel)]="submittedAmount">
         </div>
         <div class="modal-buttons">
           <button class="cancel-button" (click)="closeModal()">Cancel</button>
-          <button class="confirm-button" (click)="closeModal()">Confirm</button>
+          <button type="submit" class="confirm-button">Confirm</button>
         </div>
       </div>
     </div>
