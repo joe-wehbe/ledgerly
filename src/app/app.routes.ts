@@ -5,6 +5,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
 import { AccountsComponent } from './components/dashboard/accounts/accounts.component';
 import { AddNoteComponent } from './components/dashboard/add-note/add-note.component';
+import { NotesComponent } from './components/notes/notes.component';
 
 export const routes: Routes = [
   {
@@ -28,10 +29,10 @@ export const routes: Routes = [
     path: 'accounts',
     component: AccountsComponent,
   },
-  // {
-  //   path: 'notes',
-  //   component: NotesComponent,
-  // },
+  {
+    path: 'notes',
+    component: NotesComponent,
+  },
   {
     path: '**',
     redirectTo: 'dashboard',

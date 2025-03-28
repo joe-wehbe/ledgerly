@@ -1,12 +1,15 @@
-<div class="card">
-  <div class="upper-container">
-    <p class="card-name">Add Note</p>
-    <a routerLink="../notes">
-      <p class="view-all">View Notes</p>
-    </a>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <div class="card">
+    <div class="upper-container">
+      <p class="card-name">Add Note</p>
+      <a routerLink="../notes">
+        <p class="view-all">View Notes</p>
+      </a>
+    </div>
+    <div class="container">
+      <input class="note-title" name="title" placeholder="Enter title..." [(ngModel)]="title" required>
+      <textarea class="textarea" name="note" placeholder="Write your note here..." [(ngModel)]="note" maxlength="1120" required></textarea>
+      <button type="submit" class="button">Add</button>
+    </div>
   </div>
-  <div class="container">
-    <textarea class="textarea" name="note" placeholder="Write your note here..."></textarea>
-    <button class="button">Add</button>
-  </div>
-</div>
+</form>

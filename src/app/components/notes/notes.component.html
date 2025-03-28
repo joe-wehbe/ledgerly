@@ -1,0 +1,51 @@
+<div class="search-bar-container">
+  <i class="fas fa-search search-icon"></i>
+  <input type="text" placeholder="Search title, text, date..." class="search-bar" [(ngModel)]="searchQuery">
+</div>
+
+@if (filteredNotes().length > 0) {
+  <div class="cards-grid">
+    @for (note of filteredNotes(); track note.id){
+      <div class="card" (click)="openModal(note)">
+        <div>
+          <div class="note-title">
+            <p>{{ note.title }}</p>
+          </div>
+          <div class="note-content">
+            <p>{{ note.note.length > 319 ? (note.note | slice:0:319) + '...' : note.note }}</p>
+          </div>
+        </div>
+        <div class="note-date">
+          <p> {{ note.date | date }}</p>
+        </div>
+      </div>
+    }
+</div>
+} @else {
+  <div class="no-notes-container">
+    <p class="no-notes"> {{ searchQuery !== '' ? 'No notes match your search' : "You don't have any notes yet" }} </p>
+    <img class="icon" src="icons/notes.png" alt="Notes"><img>
+  </div>
+}
+
+@if (isModalOpen) {
+  <div class="modal-overlay" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="title-content-container">
+        <div class="note-title">
+          <p>{{ selectedNote?.title }}</p>
+        </div>
+        <div class="note-content">
+          <p>{{ selectedNote?.note }}</p>
+        </div>
+      </div>
+      <div class="delete-date-container">
+        <div class="note-date">
+          <p> {{ selectedNote?.date | date }}</p>
+        </div>
+        <p class="cancel" (click)="closeModal()">Cancel</p>
+        <p class="delete" (click)="deleteNote(selectedNote?.id)">Delete</p>
+      </div>
+    </div>
+  </div>
+}

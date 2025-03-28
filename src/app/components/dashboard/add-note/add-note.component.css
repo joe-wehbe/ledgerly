@@ -33,9 +33,9 @@
   justify-content: space-between;
 }
 
-.textarea {
+.note-title {
   width: 95%;
-  height: 100px;
+  height: 10px;
   padding: 10px;
   border-radius: 10px;
   font-size: 16px;
@@ -47,11 +47,26 @@
   transition: border 0.3s ease-in-out;
 }
 
-.textarea:focus {
+.textarea {
+  width: 95%;
+  height: 60px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 8px;
+  resize: none;
+  outline: none;
+  border: 1px solid var(--border-lines-color);
+  color: var(--text-color);
+  background: var(--input-background);
+  transition: border 0.3s ease-in-out;
+}
+
+.textarea:focus, .note-title:focus {
   border: 1px solid #28a745;
 }
 
-.textarea::placeholder {
+.textarea::placeholder, .note-title::placeholder {
   color: var(--gray-text);
 }
 

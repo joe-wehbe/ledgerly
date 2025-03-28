@@ -15,8 +15,8 @@
 .dark-theme {
   --background-color: #000000;
   --text-color: #ffffff;
-  --header-menu-background: #181818;
-  --cards-background: #181818;
+  --header-menu-background: #1f1f1f;
+  --cards-background: #1f1f1f;
   --internal-cards-background: rgb(68, 68, 68);
   --border-lines-color: #757575;
   --input-background: rgb(68, 68, 68);
@@ -28,8 +28,6 @@
 body {
   background-color: var(--background-color);
   color: var(--text-color);
-  /* font-family: sans-serif; */
-  /* font-size: 16px; */
 }
 
 html, body {

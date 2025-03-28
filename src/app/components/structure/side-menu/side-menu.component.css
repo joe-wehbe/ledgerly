@@ -1,7 +1,6 @@
 .side-menu-container {
   height: 98vh;
   background-color: var(--header-menu-background);
-  border-right: 1px solid var(--border-lines-color);
 }
 
 .logo-name-container {
@@ -55,7 +54,6 @@ a.selected .icon {
 
 .item {
   display: flex;
-  gap: 5px
 }
 
 .item:hover {
@@ -71,6 +69,7 @@ a.selected .icon {
 
 .text {
   margin: 0;
+  margin-left: 8px;
   font-size: 20px;
   color: var(--gray-text);
 }
