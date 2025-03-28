@@ -3,10 +3,11 @@ import { NotesService } from '../../services/notes.service';
 import { Note } from '../../models/note.model';
 import { DatePipe, SlicePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AddNoteComponent } from '../dashboard/add-note/add-note.component';
 
 @Component({
   selector: 'app-notes',
-  imports: [DatePipe, SlicePipe, FormsModule],
+  imports: [AddNoteComponent, DatePipe, SlicePipe, FormsModule],
   templateUrl: './notes.component.html',
   styleUrl: './notes.component.css'
 })
@@ -14,6 +15,7 @@ export class NotesComponent implements OnInit{
   notes: Note[] = [];
   searchQuery: string = '';
   isModalOpen = false;
+  addNoteModalOpen = false;
   selectedNote: Note | null = null;
   newest = true;
 
@@ -58,5 +60,13 @@ export class NotesComponent implements OnInit{
     this.notesService.deleteNote(id);
     this.closeModal();
     this.notes = this.notes.filter(note => note.id !== id);
+  }
+
+  openAddNoteModal() {
+    this.addNoteModalOpen = true;
+  }
+
+  closeAddNoteModal() {
+    this.addNoteModalOpen = false;
   }
 }

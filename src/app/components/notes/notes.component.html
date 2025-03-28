@@ -4,7 +4,6 @@
     <i class="fa fa-search search-icon"></i>
     <input type="text" placeholder="Search by title, text, date..." class="search-bar" [(ngModel)]="searchQuery">
   </div> 
-  
   <div class="sort-container">
     <div class="sort-by">
       <p> Sort by </p>
@@ -12,6 +11,9 @@
     <div class="sort" (click)="sortByDate()">
       {{ newest ? 'newest to oldest' : 'oldest to newest'}}
     </div>
+  </div>
+  <div class="add-note-circle-header" (click)="openAddNoteModal()">
+    <p>Add note</p>
   </div>
 </div>
 
@@ -32,11 +34,26 @@
         </div>
       </div>
     }
+    <div class="add-note-container" (click)="openAddNoteModal()">
+      <div class="add-note-circle">
+        <i class="fa fa-plus"></i>
+      </div>
+    </div>
 </div>
 } @else {
   <div class="no-notes-container">
-    <p class="no-notes"> {{ searchQuery !== '' ? 'No notes match your search' : "You don't have any notes yet" }} </p>
-    <img class="icon" src="icons/notes.png" alt="Notes"><img>
+    <div class="no-notes"> 
+      @if (searchQuery !== '') {
+        <p>No notes match your search</p>
+      } @else {
+        <p>No notes yet, click to add one.</p> <br>
+        <div class="add-note-container" (click)="openAddNoteModal()">
+          <div class="add-note-circle">
+            <i class="fa fa-plus"></i>
+          </div>
+        </div>
+      }
+    </div>
   </div>
 }
 
@@ -58,6 +75,14 @@
         <p class="cancel" (click)="closeModal()">Cancel</p>
         <p class="delete" (click)="deleteNote(selectedNote?.id)">Delete</p>
       </div>
+    </div>
+  </div>
+}
+
+@if (addNoteModalOpen) {
+  <div class="modal-overlay" (click)="closeAddNoteModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <app-add-note class="add-note"></app-add-note>
     </div>
   </div>
 }

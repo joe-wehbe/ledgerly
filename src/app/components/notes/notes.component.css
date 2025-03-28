@@ -76,6 +76,28 @@
   transform: scale(1.05);
 }
 
+.add-note-circle-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding: 8px;
+  border-radius: 40px;
+  width: 13%;
+  font-size: 18px;
+  border: 1px solid var(--gray-text);
+}
+
+.add-note-circle-header:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.add-note-circle-header i {
+  font-size: 20px;
+  color: white;
+}
+
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -89,7 +111,6 @@
   justify-content: space-between;
   min-height: 220px;
   max-height: 220px;
-  padding: 10px;
   font-size: 18px;
   border-radius: 10px;
   background: var(--cards-background);
@@ -104,10 +125,18 @@
   text-align: center;
   font-weight: bold;
   font-size: 20px;
+  padding: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: var(--border-lines-color);
 }
 
 p {
   margin: 0;
+}
+
+.note-content, .note-date {
+  padding: 10px;
 }
 
 .note-content p {
@@ -122,6 +151,41 @@ p {
   width: 100%;
   text-align: start;
   color: var(--gray-text);
+}
+
+.add-note-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid var(--gray-text);
+  padding: 80px;
+}
+
+.add-note-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #28a745;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.add-note-circle i {
+  font-size: 30px;
+  color: white;
+}
+
+.add-note-container:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.add-note {
+  width: 100%;
+  height: 100%;
 }
 
 .no-notes-container {
@@ -204,5 +268,9 @@ p {
 @media (max-width: 600px) {
   .cards-grid {
     grid-template-columns: repeat(1, 1fr);
+  }
+
+  .add-note-circle-header {
+    display: none;
   }
 }
