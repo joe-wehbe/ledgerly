@@ -1,6 +1,18 @@
 <div class="search-bar-container">
-  <i class="fas fa-search search-icon"></i>
-  <input type="text" placeholder="Search title, text, date..." class="search-bar" [(ngModel)]="searchQuery">
+  <p class="notes-number">{{ filteredNotes().length == 1 ? '1 note' : filteredNotes().length + ' notes'}}</p>
+  <div class="search-wrapper">
+    <i class="fa fa-search search-icon"></i>
+    <input type="text" placeholder="Search by title, text, date..." class="search-bar" [(ngModel)]="searchQuery">
+  </div> 
+  
+  <div class="sort-container">
+    <div class="sort-by">
+      <p> Sort by </p>
+    </div>
+    <div class="sort" (click)="sortByDate()">
+      {{ newest ? 'newest to oldest' : 'oldest to newest'}}
+    </div>
+  </div>
 </div>
 
 @if (filteredNotes().length > 0) {

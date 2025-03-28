@@ -3,7 +3,6 @@ import { NotesService } from '../../services/notes.service';
 import { Note } from '../../models/note.model';
 import { DatePipe, SlicePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { query } from 'express';
 
 @Component({
   selector: 'app-notes',
@@ -16,6 +15,7 @@ export class NotesComponent implements OnInit{
   searchQuery: string = '';
   isModalOpen = false;
   selectedNote: Note | null = null;
+  newest = true;
 
   constructor (private notesService: NotesService) {}
 
@@ -38,8 +38,12 @@ export class NotesComponent implements OnInit{
         fullMonthFormat.includes(query) ||
         shortMonthFormat.includes(query)
       );
-    }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    }).sort((a, b) => this.newest ? new Date(b.date).getTime() - new Date(a.date).getTime() : new Date(a.date).getTime() - new Date(b.date).getTime());
   } 
+
+  sortByDate() {
+    this.newest = !this.newest;
+  }
 
   openModal(note: Note) {
     this.isModalOpen = true;
