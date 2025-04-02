@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AccountsService } from './accounts.service';
 import { Account } from '../models/account.model';
+import { Transaction } from '../models/transaction.model'
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionsService {
   accounts: Account[] = [];
+  transcations: Transaction[] = [];
 
   constructor(private accountsService: AccountsService) { 
     this.accounts = this.accountsService.getAccounts();
+    this.transcations = this.getTransactions();
   }
 
   deposit(amount: number | null, accountId: number | null, isTransfer: boolean) {
@@ -18,6 +21,16 @@ export class TransactionsService {
       if (!isTransfer) account.income += amount!;
       account.balance += amount!;
       localStorage.setItem('accounts', JSON.stringify(this.accounts));
+
+      this.transcations.push({
+        id: this.transcations.length > 0 ? this.transcations[this.transcations.length-1].id + 1 : 1,
+        account: account,
+        date: new Date(),
+        amount: amount,
+        type: 'income',
+      });
+
+      localStorage.setItem('transactions', JSON.stringify(this.transcations));
     }
   }
 
@@ -27,6 +40,16 @@ export class TransactionsService {
       if (!isTransfer) account.expenses += amount!;
       account.balance -= amount!;
       localStorage.setItem('accounts', JSON.stringify(this.accounts));
+
+      this.transcations.push({
+        id: this.transcations[this.transcations.length-1].id + 1,
+        account: account,
+        date: new Date(),
+        amount: amount,
+        type: 'expense',
+      });
+
+      localStorage.setItem('transactions', JSON.stringify(this.transcations));
     }
   }
 
@@ -36,6 +59,6 @@ export class TransactionsService {
   }
 
   getTransactions() {
-
+    return JSON.parse(localStorage.getItem('transactions') || '[]');
   }
 }

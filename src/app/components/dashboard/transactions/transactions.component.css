@@ -1,6 +1,7 @@
 .card {
   height: 100%;
   padding: 10px;
+  height: 325px;
   border-radius: 10px;
   background: var(--cards-background);
 }
@@ -83,20 +84,24 @@ td {
   border-bottom: 1px solid var(--border-lines-color);
 }
 
+.transactions-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
 .chip-income, .chip-expense {
   display: inline-flex;
   justify-content: center;
-  padding: 0px 10px;
+  padding: 3px 10px;
   width: 55px;
-  border-radius: 5px;
+  border-radius: 50px;
 }
 
 .chip-income {
-  background-color: #28a745;
-  color: white;
+  background-color: var(--income-chip-background);
+  color: var(--income-chip-color);
 }
 
 .chip-expense {
-  background-color: #dc3545;
-  color: white;
+  background-color: var(--expense-chip-background);
+  color: var(--expense-chip-color);
 }

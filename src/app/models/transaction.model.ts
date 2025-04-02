@@ -1,11 +1,9 @@
-import { Account } from "./account.model"
+import { Account } from "./account.model";
 
 export interface Transaction {
   id: number,
-  from: Account,
-  to: Account,
-  date: Date
-  time: string, 
-  amount: number,
+  account: Account,
+  date: Date,
+  amount: number | null,
   type: 'income' | 'expense',
 }

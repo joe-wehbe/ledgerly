@@ -21,48 +21,19 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Savings</td>
-          <td>Feb 21, 2025</td>
-          <td>3:30 PM</td>
-          <td>$10,000</td>
-          <td><div class="chip-income">Income</div></td>
-        </tr>
-        <tr>
-          <td>Debit</td>
-          <td>Feb 18, 2025</td>
-          <td>1:27 PM</td>
-          <td>$340</td>
-          <td><div class="chip-expense">Expense</div></td>
-        </tr>
-        <tr>
-          <td>Wallet</td>
-          <td>Feb 15, 2025</td>
-          <td>12:43 PM</td>
-          <td>$1000</td>
-          <td><div class="chip-income">Income</div></td>
-        </tr>
-        <tr>
-          <td>Savings</td>
-          <td>Feb 21, 2025</td>
-          <td>3:30 PM</td>
-          <td>$10,000</td>
-          <td><div class="chip-income">Income</div></td>
-        </tr>
-        <tr>
-          <td>Debit</td>
-          <td>Feb 18, 2025</td>
-          <td>1:27 PM</td>
-          <td>$340</td>
-          <td><div class="chip-expense">Expense</div></td>
-        </tr>
-        <tr>
-          <td>Wallet</td>
-          <td>Feb 15, 2025</td>
-          <td>12:43 PM</td>
-          <td>$1000</td>
-          <td><div class="chip-income">Income</div></td>
-        </tr>
+        @for (transaction of transactions | slice:0:6; track transaction.id) {
+          <tr>
+            <td>{{ transaction.account.name }}</td>
+            <td>{{ transaction.date | date }}</td>
+            <td>{{ transaction.date | date:'mediumTime' }}</td>
+            <td>{{ transaction.amount | currency }}</td>
+            <td>
+              <div [class.chip-income]="transaction.type === 'income'" [class.chip-expense]="transaction.type === 'expense'">                
+                {{ transaction.type }}
+              </div>
+            </td>
+          </tr>
+        }
       </tbody>
     </table>    
   }
