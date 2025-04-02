@@ -41,11 +41,11 @@ a {
 }
 
 a.selected .text {
-  color: var(--clicked-menu-button);
+  color: #28a745;
 }
 
 a.selected .icon {
-  filter: var(--clicked-menu-icon);
+  filter: invert(47%) sepia(58%) saturate(349%) hue-rotate(92deg) brightness(92%) contrast(92%);
 }
 
 .selected-route{

@@ -82,7 +82,21 @@
 @if (addNoteModalOpen) {
   <div class="modal-overlay" (click)="closeAddNoteModal()">
     <div class="modal-content" (click)="$event.stopPropagation()">
-      <app-add-note class="add-note"></app-add-note>
+      <app-add-note class="add-note">
+        <form class="form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+            <div class="upper-container">
+              <p class="card-name">Add Note</p>
+            </div>
+            <div class="container">
+              <input class="add-note-title" name="title" placeholder="Enter note title..." [(ngModel)]="title" maxlength="42" required>
+              <textarea class="textarea" name="note" placeholder="Write your note here..." [(ngModel)]="note" maxlength="1120" required></textarea>
+              <div class="modal-buttons">
+                <button class="cancel-button" (click)="closeAddNoteModal()">Cancel</button>
+                <button type="submit" class="button">Add</button>
+              </div>
+            </div>
+        </form>
+      </app-add-note>
     </div>
   </div>
 }

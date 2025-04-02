@@ -18,6 +18,8 @@ export class NotesComponent implements OnInit{
   addNoteModalOpen = false;
   selectedNote: Note | null = null;
   newest = true;
+  title: string = '';
+  note: string = '';
 
   constructor (private notesService: NotesService) {}
 
@@ -68,5 +70,14 @@ export class NotesComponent implements OnInit{
 
   closeAddNoteModal() {
     this.addNoteModalOpen = false;
+  }
+
+  onSubmit(form: any) {
+    if (form.valid) {
+      this.notesService.addNote(this.title, this.note);
+      this.notes = this.notesService.getNotes(); 
+      form.reset();
+      this.closeAddNoteModal();
+    }
   }
 }

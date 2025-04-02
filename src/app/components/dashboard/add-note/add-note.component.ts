@@ -9,15 +9,5 @@ import { NotesService } from '../../../services/notes.service';
   styleUrl: './add-note.component.css'
 })
 export class AddNoteComponent {
-  title: string = '';
-  note: string = '';
 
-  constructor (private notesService: NotesService) {}
-
-  onSubmit(form: any) {
-    if (form.valid) {
-      this.notesService.addNote(this.title, this.note);
-      form.reset();
-    }
-  }
 }
