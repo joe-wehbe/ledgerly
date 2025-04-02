@@ -2,7 +2,7 @@
   <div class="left-column">
       <app-total class="total-component" [selectedAccount]="selectedAccount"></app-total>
       <app-statistics class="stats-component"></app-statistics>
-      <app-transactions class="trans-component"></app-transactions>
+      <app-transactions class="trans-component" [selectedAccount]="selectedAccount"></app-transactions>
   </div>
   <div class="right-column">
     <app-accounts class="accounts-component" (selectedAccount)="updateSelectedAccount($event)"></app-accounts>

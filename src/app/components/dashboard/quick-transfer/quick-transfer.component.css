@@ -73,14 +73,15 @@ select {
   padding: 10px;
   margin-top: 15px;
   margin-bottom: 6px;
-  border-radius: 5px;
+  border-radius: 40px;
   font-size: 16px;
-  border: none;
+  border: 1px solid gray;
   cursor: pointer;
-  color: white;
-  background: #28a745;
+  color: var(--text-color);
+  background-color: transparent;
 }
 
 .button:hover {
-  background: #549964;
+  border: 1px solid #28a745;
+  color: #28a745;
 }

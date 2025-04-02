@@ -1,7 +1,7 @@
 .card {
   height: 100%;
   padding: 10px;
-  height: 325px;
+  height: 330px;
   border-radius: 10px;
   background: var(--cards-background);
 }
@@ -76,12 +76,17 @@ th {
   padding: 10px;
   color: var(--gray-text);
   background-color: var(--internal-cards-background);
+  border-top: 1px solid var(--border-lines-color);
+  border-bottom: 1px solid var(--border-lines-color);
+}
+
+tr:nth-child(even) {
+  background-color: var(--internal-cards-background);
 }
 
 td {
   text-align: center;
-  padding: 10px;
-  border-bottom: 1px solid var(--border-lines-color);
+  padding: 9px;
 }
 
 .transactions-table tbody tr:last-child td {

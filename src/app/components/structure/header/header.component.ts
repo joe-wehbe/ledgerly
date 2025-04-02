@@ -27,7 +27,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.accounts = this.accountsService.getAccounts();
-    console.log(localStorage.getItem('accounts'));
   }
 
   toggleTheme(): void {
