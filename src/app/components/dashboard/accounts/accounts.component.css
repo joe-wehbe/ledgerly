@@ -91,7 +91,6 @@ a {
   height: 60px;
   border-radius: 5px;
   background: var(--internal-cards-background);
-  border: 2px solid transparent;
 }
 
 .account:hover {
@@ -103,6 +102,18 @@ a {
   border: 1px solid #28a745;
 }
 
+/* .add-account {
+  padding: 10px;
+  height: 60px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.add-account:hover {
+  cursor: pointer;
+  transform: scale(1.04);
+} */
+
 .account-name {
   font-size: 1.3em;
   color: var(--gray-text);
@@ -112,4 +123,40 @@ a {
   margin: 5px;
   text-align: center;
   font-size: 1.7em;
+}
+
+.add-account-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px solid var(--border-lines-color);
+  padding: 10px;
+  height: 60px;
+}
+
+.add-account-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #28a745;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.add-account-circle i {
+  font-size: 15;
+  color: #28a745
+}
+
+.add-account-container:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.add-account {
+  width: 100%;
+  height: 100%;
 }

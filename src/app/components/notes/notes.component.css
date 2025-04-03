@@ -127,9 +127,7 @@
   padding: 5px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  /* border-bottom: 1px solid lightgray; */
   background-color: var(--note-title-background);
-  /* background-color: var(--border-lines-color); */
 }
 
 p {
@@ -329,7 +327,7 @@ p {
   transition: border 0.3s ease-in-out;
 }
 
-.textarea:focus, .note-title:focus {
+.textarea:focus, .add-note-title:focus {
   border: 1px solid #28a745;
 }
 

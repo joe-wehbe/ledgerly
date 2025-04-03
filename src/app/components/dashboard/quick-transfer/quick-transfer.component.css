@@ -75,9 +75,9 @@ select {
   margin-bottom: 6px;
   border-radius: 40px;
   font-size: 16px;
-  border: 1px solid gray;
+  border: 1px solid #28a745;
   cursor: pointer;
-  color: var(--text-color);
+  color: #28a745;
   background-color: transparent;
 }
 
