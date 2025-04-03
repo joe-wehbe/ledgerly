@@ -102,18 +102,6 @@ a {
   border: 1px solid #28a745;
 }
 
-/* .add-account {
-  padding: 10px;
-  height: 60px;
-  border-radius: 5px;
-  border: 1px solid lightgray;
-}
-
-.add-account:hover {
-  cursor: pointer;
-  transform: scale(1.04);
-} */
-
 .account-name {
   font-size: 1.3em;
   color: var(--gray-text);

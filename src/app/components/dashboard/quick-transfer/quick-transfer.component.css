@@ -75,7 +75,7 @@ select {
   margin-bottom: 6px;
   border-radius: 40px;
   font-size: 16px;
-  border: 1px solid #28a745;
+  border: 1px solid var(--border-lines-color);
   cursor: pointer;
   color: #28a745;
   background-color: transparent;
@@ -83,5 +83,4 @@ select {
 
 .button:hover {
   border: 1px solid #28a745;
-  color: #28a745;
 }
