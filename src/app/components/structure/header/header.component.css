@@ -62,12 +62,36 @@
 .buttons-container {
   display: flex;
   justify-content: space-evenly;
-  gap: 50px;
+  gap: 10px;
 }
 
 .buttons-container p {
   margin: 0;
   font-size: 20px;
+}
+
+.deposit-container, .withdraw-container, .transfer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px 5px 10px;
+  gap: 5px;
+  border: 1px solid var(--border-lines-color);
+  border-radius: 30px;
+}
+
+.deposit-container:hover, .withdraw-container:hover, .transfer-container:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.icon, .transfer-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.transfer-icon {
+  filter: var(--icon-filter);
 }
 
 .theme {
@@ -76,9 +100,9 @@
   margin-left: 20px;
 }
 
-.buttons-container p:hover, .theme:hover {
+.theme:hover{
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .modal-overlay {

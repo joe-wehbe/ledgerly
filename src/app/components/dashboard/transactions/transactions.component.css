@@ -12,6 +12,19 @@
   justify-content: space-between;
 }
 
+.icon-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.icon {
+  width: 27px;
+  height: 27px;
+  filter: var(--icon-filter);
+}
+
 .card-name {
   margin: 0;
   font-size: 20px;

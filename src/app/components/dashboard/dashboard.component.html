@@ -11,7 +11,10 @@
       <form #form="ngForm" (ngSubmit)="onSubmit(form)">
         <div class="card">
           <div class="upper-container">
-            <p class="card-name">Add Note</p>
+            <div class="icon-name-container">
+              <img class="icon" src="icons/notes.png" alt="trans">
+              <p class="card-name">Add Note</p>
+            </div>
             <a routerLink="../notes">
               <p class="view-all">View Notes</p>
             </a>

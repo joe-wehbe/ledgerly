@@ -4,6 +4,19 @@
   background: var(--cards-background);
 }
 
+.icon-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.icon {
+  width: 23px;
+  height: 23px;
+  filter: var(--icon-filter);
+}
+
 .card-name {
   margin: 0;
   font-size: 20px;

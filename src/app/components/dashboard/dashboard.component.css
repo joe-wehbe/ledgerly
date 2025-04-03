@@ -38,6 +38,19 @@
   margin-bottom: 10px;
 }
 
+.icon-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.icon {
+  width: 23px;
+  height: 23px;
+  filter: var(--icon-filter);
+}
+
 .card-name {
   margin: 0;
   font-size: 20px;

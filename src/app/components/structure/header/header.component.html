@@ -10,9 +10,18 @@
       </div>
     </div>
     <div class="buttons-container">
-      <p (click)="openModal('Deposit')">Deposit</p>
-      <p (click)="openModal('Withdraw')">Withdraw</p>
-      <p (click)="openModal('Transfer')">Transfer</p>
+      <div class="deposit-container" (click)="openModal('Deposit')">
+        <img class="icon" src="icons/deposit.png" alt="dep">
+        <p>Deposit</p>
+      </div>
+      <div class="withdraw-container" (click)="openModal('Withdraw')">
+        <img class="icon" src="icons/withdraw.png" alt="dep">
+        <p>Withdraw</p>
+      </div>
+      <div class="transfer-container" (click)="openModal('Transfer')">
+        <img class="transfer-icon" src="icons/transfer-header.png" alt="dep">
+        <p>Transfer</p>
+      </div>
     </div>
     <div class="theme-container" (click)="toggleTheme()">
       <img class="theme" [src]="isDarkMode ? 'icons/lightmode.png' : 'icons/darkmode.png'" alt="Dark Mode">

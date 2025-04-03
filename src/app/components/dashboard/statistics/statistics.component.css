@@ -12,6 +12,18 @@
   justify-content: space-between;
 }
 
+.icon-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  width: 27px;
+  height: 27px;
+  filter: var(--icon-filter);
+}
+
 p {
   margin: 5px;
   font-size: 16px;
