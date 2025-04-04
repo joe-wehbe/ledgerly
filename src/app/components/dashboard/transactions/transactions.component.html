@@ -13,31 +13,37 @@
       <div class="spinner"></div>
     </div> 
   } @else {
-    <table class="transactions-table">
-      <thead>
-        <tr>
-          <th>Account</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Amount</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (transaction of filteredTransactions() | slice:0:6; track transaction.id) {
+    @if (filteredTransactions().length > 0) {
+      <table class="transactions-table">
+        <thead>
           <tr>
-            <td>{{ selectedAccount()?.name !== 'All Accounts' ? selectedAccount()?.name : transaction.account.name}}</td>
-            <td>{{ transaction.date | date }}</td>
-            <td>{{ transaction.date | date:'mediumTime' }}</td>
-            <td>{{ transaction.amount | currency }}</td>
-            <td>
-              <div [class.chip-income]="transaction.type === 'income'" [class.chip-expense]="transaction.type === 'expense'">                
-                {{ transaction.type }}
-              </div>
-            </td>
+            <th>Account</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Amount</th>
+            <th>Type</th>
           </tr>
-        }
-      </tbody>
-    </table>    
+        </thead>
+        <tbody>
+          @for (transaction of filteredTransactions() | slice:0:6; track transaction.id) {
+            <tr>
+              <td>{{ selectedAccount()?.name !== 'All Accounts' ? selectedAccount()?.name : transaction.account.name}}</td>
+              <td>{{ transaction.date | date }}</td>
+              <td>{{ transaction.date | date:'mediumTime' }}</td>
+              <td>{{ transaction.amount | currency }}</td>
+              <td>
+                <div [class.chip-income]="transaction.type === 'income'" [class.chip-expense]="transaction.type === 'expense'">                
+                  {{ transaction.type }}
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>   
+    } @else {
+      <div class="no-transactions">
+        <p class="text">No transactions found for {{ selectedAccount()?.name }}</p>
+      </div>
+    }
   }
 </div>

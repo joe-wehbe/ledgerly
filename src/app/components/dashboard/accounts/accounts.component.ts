@@ -3,10 +3,11 @@ import { RouterLink } from '@angular/router';
 import { AccountsService } from '../../../services/accounts.service';
 import { Account } from '../../../models/account.model';
 import { CurrencyPipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-accounts',
-  imports: [RouterLink, CurrencyPipe],
+  imports: [FormsModule, RouterLink, CurrencyPipe],
   templateUrl: './accounts.component.html',
   styleUrl: './accounts.component.css'
 })
@@ -15,6 +16,10 @@ export class AccountsComponent implements OnInit {
   allSelected = false;
   accounts: Account[] = [];
   selectedId: number | null = null;
+  isModalOpen = false;
+  accountName: string = '';
+  initialBalance: number = 0;
+
   @Output() selectedAccount = new EventEmitter<Account>();
 
   constructor(private accountsService: AccountsService) {}
@@ -47,6 +52,22 @@ export class AccountsComponent implements OnInit {
           expenses: this.accountsService.getTotalExpenses(),
         }
       )
+    }
+  }
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  onSubmit(form: any) {
+    if (form.valid) {
+      this.accountsService.addAccount(this.accountName, this.initialBalance);
+      form.reset();
+      this.closeModal();
     }
   }
 }

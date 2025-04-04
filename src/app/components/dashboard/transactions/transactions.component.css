@@ -123,3 +123,15 @@ td {
   background-color: var(--expense-chip-background);
   color: var(--expense-chip-color);
 }
+
+.no-transactions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 85%;
+}
+
+.text {
+  font-size: 20px;
+  font-style: italic;
+}

@@ -9,12 +9,14 @@ export class AccountsService {
   constructor() { }
 
   getAccounts() {
-    const accounts = localStorage.getItem('accounts');
-    return accounts ? JSON.parse(accounts) : [];
+    return JSON.parse(localStorage.getItem('accounts') || '[]');
   }
 
-  addAccount(account: Account) {  
-    // localStorage.setItem('accounts', this.getAccounts().push(account));
+  addAccount(name: string, balance: number) {  
+    const accounts = this.getAccounts();
+    const id = accounts.length > 0 ? accounts[accounts.length-1].id + 1 : 1;
+    accounts.push({id: id, name: name, balance: balance, income: 0, expenses: 0});
+    localStorage.setItem('accounts', JSON.stringify(accounts));  
   }
 
   deleteAccount() {
