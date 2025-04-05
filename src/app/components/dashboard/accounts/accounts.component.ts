@@ -66,6 +66,7 @@ export class AccountsComponent implements OnInit {
   onSubmit(form: any) {
     if (form.valid) {
       this.accountsService.addAccount(this.accountName, this.initialBalance);
+      this.accounts = this.accountsService.getAccounts();
       form.reset();
       this.closeModal();
     }

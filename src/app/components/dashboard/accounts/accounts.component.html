@@ -23,11 +23,13 @@
           <div class="amount">{{ account.balance | currency }} </div>
         </div>
       }
-      <div class="add-account-container" (click)="openModal()">
-        <div class="add-account-circle">
-          <i class="fa fa-plus"></i>
+      @if (accounts.length < 6) {
+        <div class="add-account-container" (click)="openModal()">
+          <div class="add-account-circle">
+            <i class="fa fa-plus"></i>
+          </div>
         </div>
-      </div>
+      }
     </div>
   }
 </div>

@@ -16,7 +16,7 @@ export class TransactionsService {
   }
 
   deposit(amount: number | null, accountId: number | null, isTransfer: boolean) {
-    const account = this.accounts.find(account => account.id === accountId);
+    const account = this.accounts.find(account => account.id == accountId);
     if (account) {
       if (!isTransfer) account.income += amount!;
       account.balance += amount!;
@@ -35,7 +35,7 @@ export class TransactionsService {
   }
 
   withdraw(amount: number | null, accountId: number | null, isTransfer: boolean) {
-    const account = this.accounts.find(account => account.id === accountId);
+    const account = this.accounts.find(account => account.id == accountId);
     if (account) {
       if (!isTransfer) account.expenses += amount!;
       account.balance -= amount!;
