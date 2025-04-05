@@ -49,7 +49,7 @@ p {
 .income-circle, .expenses-circle {
   width: 15px;
   height: 15px;
-  border-radius: 50%;
+  border-radius: 35%;
 }
 
 .income-circle {

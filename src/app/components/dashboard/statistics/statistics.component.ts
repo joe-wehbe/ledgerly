@@ -46,26 +46,22 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   fetchData() {
     let transactions = this.transactionsService.getTransactions() ?? [];
     let filteredTransactions = transactions;
+    const incomeMap = new Map<string, number>();
+    const expenseMap = new Map<string, number>();
+    const allDates: string[] = [];
+    const today = new Date();
 
     if (this.selectedAccount()?.id !== 0) {
       filteredTransactions = transactions.filter((txn: Transaction) => txn.account.id === this.selectedAccount()?.id)
     }
-
-    const incomeMap = new Map<string, number>();
-    const expenseMap = new Map<string, number>();
-
+    
     for (const txn of filteredTransactions) {
       if (txn.amount == null) continue;
-
       const dateObj = txn.date instanceof Date ? txn.date : new Date(txn.date);
       const dateKey = dateObj.toISOString().split('T')[0];
-
       const map = txn.type === 'income' ? incomeMap : expenseMap;
       map.set(dateKey, (map.get(dateKey) || 0) + txn.amount);
     }
-
-    const allDates: string[] = [];
-    const today = new Date();
 
     for (let i = 29; i >= 0; i--) {
       const date = new Date(today);
@@ -95,7 +91,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
     name: 'custom',
     selectable: true,
     group: ScaleType.Ordinal,
-    domain: ['#28a745', '#dc3545']
+    domain: ['#28a745', '#dc3545', 'AFAFAF']
   };
 
   formatXAxis = (value: string) => {

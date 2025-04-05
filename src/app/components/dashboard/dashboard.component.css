@@ -16,10 +16,6 @@
     grid-template-columns: 1fr;
   }
 
-  .accounts-component {
-    margin-top: 20px;
-  }
-
   .left-column, .right-column {
     width: 99.5%;
   }
