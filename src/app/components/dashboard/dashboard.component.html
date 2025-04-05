@@ -1,7 +1,7 @@
 <div class="content-grid">
   <div class="left-column">
       <app-total class="total-component" [selectedAccount]="selectedAccount"></app-total>
-      <app-statistics class="stats-component"></app-statistics>
+      <app-statistics class="stats-component" [selectedAccount]="selectedAccount"></app-statistics>
       <app-transactions class="trans-component" [selectedAccount]="selectedAccount"></app-transactions>
   </div>
   <div class="right-column">

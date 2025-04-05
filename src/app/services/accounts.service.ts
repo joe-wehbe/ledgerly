@@ -14,7 +14,7 @@ export class AccountsService {
 
   addAccount(name: string, balance: number | null) {  
     const accounts = this.getAccounts();
-    const id = accounts.length > 0 ? Number(accounts[accounts.length-1].id) + 1 : 1;
+    const id = accounts.length > 0 ? accounts[accounts.length-1].id + 1 : 1;
     accounts.push({id: id, name: name, balance: balance, income: 0, expenses: 0});
     localStorage.setItem('accounts', JSON.stringify(accounts));  
   }

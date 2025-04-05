@@ -10,7 +10,7 @@ export class NotesService {
 
   addNote(title: string, note: string) {
     const notes = this.getNotes();
-    const id = notes.length > 0 ? Number(notes[notes.length-1].id) + 1 : 1;
+    const id = notes.length > 0 ? notes[notes.length-1].id + 1 : 1;
     notes.push({id: id, title: title, note: note, date: new Date()});
     localStorage.setItem('notes', JSON.stringify(notes));
   }

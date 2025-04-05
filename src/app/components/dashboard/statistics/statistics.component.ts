@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, input, effect } from '@angular/core';
 import { NgxChartsModule, Color, ScaleType } from '@swimlane/ngx-charts';
 import { TransactionsService } from '../../../services/transactions.service';
 import { Transaction } from '../../../models/transaction.model';
+import { Account } from '../../../models/account.model';
 
 @Component({
   selector: 'app-statistics',
@@ -11,18 +12,16 @@ import { Transaction } from '../../../models/transaction.model';
   standalone: true
 })
 export class StatisticsComponent implements OnInit, OnDestroy {
-  private transactionsService = inject(TransactionsService);
+  transactionsService = inject(TransactionsService);
+  selectedAccount = input.required<Account | null>();
 
   isLoading = true;
   view: [number, number] = [1000, 360];
   data: any[] = [];
 
-  colorScheme: Color = {
-    name: 'custom',
-    selectable: true,
-    group: ScaleType.Ordinal,
-    domain: ['#28a745', '#dc3545']
-  };
+  effect = effect(() => {
+    this.fetchData();
+  });
 
   ngOnInit() {
     this.fetchData();
@@ -44,12 +43,17 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   }
 
   fetchData() {
-    const transactions = this.transactionsService.getTransactions() ?? [];
+    let transactions = this.transactionsService.getTransactions() ?? [];
+    let filteredTransactions = transactions;
+
+    if (this.selectedAccount()?.id !== 0) {
+      filteredTransactions = transactions.filter((txn: Transaction) => txn.account.id === this.selectedAccount()?.id)
+    }
 
     const incomeMap = new Map<string, number>();
     const expenseMap = new Map<string, number>();
 
-    for (const txn of transactions) {
+    for (const txn of filteredTransactions) {
       if (txn.amount == null) continue;
 
       const dateObj = txn.date instanceof Date ? txn.date : new Date(txn.date);
@@ -85,6 +89,13 @@ export class StatisticsComponent implements OnInit, OnDestroy {
       }
     ];
   }
+
+  colorScheme: Color = {
+    name: 'custom',
+    selectable: true,
+    group: ScaleType.Ordinal,
+    domain: ['#28a745', '#dc3545']
+  };
 
   formatXAxis = (value: string) => {
     const date = new Date(value);
