@@ -27,8 +27,11 @@ export class TransactionsComponent implements OnInit {
   }
 
   filteredTransactions = computed(() => {
-    return this.transactions().filter(transaction => 
-      this.selectedAccount()?.id ? transaction.account.id === this.selectedAccount()?.id : true
-    );
+    return this.transactions()
+      .filter(transaction => 
+        this.selectedAccount()?.id ? transaction.account.id === this.selectedAccount()?.id : true
+      )
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   });
+  
 }

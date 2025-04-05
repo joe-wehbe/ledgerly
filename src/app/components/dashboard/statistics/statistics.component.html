@@ -29,10 +29,12 @@
       [yAxis]="true"
       [showXAxisLabel]="true"
       [showYAxisLabel]="true"
-      xAxisLabel="Month"
+      xAxisLabel="Last 30 Days"
       yAxisLabel="Amount"
-      [autoScale]="true">
-      </ngx-charts-line-chart>
+      [autoScale]="true"
+      [xAxisTickFormatting]="formatXAxis">
+    </ngx-charts-line-chart>
+    
     }
   </div>
 </div>

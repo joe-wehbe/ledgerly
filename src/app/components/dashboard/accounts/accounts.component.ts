@@ -18,7 +18,7 @@ export class AccountsComponent implements OnInit {
   selectedId: number | null = null;
   isModalOpen = false;
   accountName: string = '';
-  initialBalance: number = 0;
+  initialBalance: number | null = null;
 
   @Output() selectedAccount = new EventEmitter<Account>();
 

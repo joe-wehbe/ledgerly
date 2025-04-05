@@ -1,17 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { NgxChartsModule, Color, ScaleType } from '@swimlane/ngx-charts';
+import { TransactionsService } from '../../../services/transactions.service';
+import { Transaction } from '../../../models/transaction.model';
 
 @Component({
   selector: 'app-statistics',
   imports: [NgxChartsModule],
   templateUrl: './statistics.component.html',
-  styleUrl: './statistics.component.css'
+  styleUrl: './statistics.component.css',
+  standalone: true
 })
-export class StatisticsComponent implements OnInit{
-  isLoading: boolean = true;
+export class StatisticsComponent implements OnInit, OnDestroy {
+  private transactionsService = inject(TransactionsService);
+
+  isLoading = true;
   view: [number, number] = [1000, 360];
+  data: any[] = [];
+
+  colorScheme: Color = {
+    name: 'custom',
+    selectable: true,
+    group: ScaleType.Ordinal,
+    domain: ['#28a745', '#dc3545']
+  };
 
   ngOnInit() {
+    this.fetchData();
+
     setTimeout(() => {
       this.isLoading = false;
       this.updateChartSize();
@@ -19,56 +34,60 @@ export class StatisticsComponent implements OnInit{
     }, 500);
   }
 
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.updateChartSize.bind(this));
+  }
+
   updateChartSize() {
     const parentWidth = document.querySelector('.chart-container')?.clientWidth || 1000;
     this.view = [parentWidth, 360];
   }
 
-  ngOnDestroy() {
-    window.removeEventListener('resize', this.updateChartSize.bind(this));
+  fetchData() {
+    const transactions = this.transactionsService.getTransactions() ?? [];
+
+    const incomeMap = new Map<string, number>();
+    const expenseMap = new Map<string, number>();
+
+    for (const txn of transactions) {
+      if (txn.amount == null) continue;
+
+      const dateObj = txn.date instanceof Date ? txn.date : new Date(txn.date);
+      const dateKey = dateObj.toISOString().split('T')[0];
+
+      const map = txn.type === 'income' ? incomeMap : expenseMap;
+      map.set(dateKey, (map.get(dateKey) || 0) + txn.amount);
+    }
+
+    const allDates: string[] = [];
+    const today = new Date();
+
+    for (let i = 29; i >= 0; i--) {
+      const date = new Date(today);
+      date.setDate(today.getDate() - i);
+      allDates.push(date.toISOString().split('T')[0]);
+    }
+
+    this.data = [
+      {
+        name: 'Income',
+        series: allDates.map(date => ({
+          name: date,
+          value: incomeMap.get(date) || 0
+        }))
+      },
+      {
+        name: 'Expenses',
+        series: allDates.map(date => ({
+          name: date,
+          value: expenseMap.get(date) || 0
+        }))
+      }
+    ];
   }
 
-  data = [
-    {
-      name: 'Income',
-      series: [
-        { name: 'Jan', value: 5000 },
-        { name: 'Feb', value: 6000 },
-        { name: 'Mar', value: 5500 },
-        { name: 'Apr', value: 7000 },
-        { name: 'May', value: 5400 },
-        { name: 'June', value: 3200 },
-        { name: 'Jul', value: 3000 },
-        { name: 'Aug', value: 2800 },
-        { name: 'Sep', value: 4500 },
-        { name: 'Oct', value: 5000 },
-        { name: 'Nov', value: 5200 },
-        { name: 'Dec', value: 5100 },
-      ]
-    },
-    {
-      name: 'Expenses',
-      series: [
-        { name: 'Jan', value: 3000 },
-        { name: 'Feb', value: 3500 },
-        { name: 'Mar', value: 3200 },
-        { name: 'Apr', value: 3000 },
-        { name: 'May', value: 3400 },
-        { name: 'June', value: 3200 },
-        { name: 'Jul', value: 2300 },
-        { name: 'Aug', value: 5400 },
-        { name: 'Sep', value: 3000 },
-        { name: 'Oct', value: 2300 },
-        { name: 'Nov', value: 3400 },
-        { name: 'Dec', value: 4000 },
-      ]
-    }
-  ];
-  
-  colorScheme: Color = {
-    name: 'custom',
-    selectable: true,
-    group: ScaleType.Ordinal,
-    domain: ['#28a745', '#dc3545']
+  formatXAxis = (value: string) => {
+    const date = new Date(value);
+    return date.getDate().toString();
   };
 }
