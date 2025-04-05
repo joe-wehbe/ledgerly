@@ -23,7 +23,7 @@ export class TransactionsService {
       localStorage.setItem('accounts', JSON.stringify(this.accounts));
 
       this.transcations.push({
-        id: this.transcations.length > 0 ? this.transcations[this.transcations.length-1].id + 1 : 1,
+        id: this.transcations.length > 0 ? Number(this.transcations[this.transcations.length-1].id) + 1 : 1,
         account: account,
         date: new Date(),
         amount: amount,
