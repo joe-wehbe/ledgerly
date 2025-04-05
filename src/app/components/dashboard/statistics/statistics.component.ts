@@ -14,7 +14,8 @@ import { Account } from '../../../models/account.model';
 export class StatisticsComponent implements OnInit, OnDestroy {
   transactionsService = inject(TransactionsService);
   selectedAccount = input.required<Account | null>();
-
+  lastDate = new Date();
+  firstDate = new Date().setDate(this.lastDate.getDay() - 30);
   isLoading = true;
   view: [number, number] = [1000, 360];
   data: any[] = [];

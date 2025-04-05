@@ -2,8 +2,10 @@
   <div class="upper-container">
     <div class="icon-name-container">
       <img class="icon" src="icons/statistics.png" alt="stats">
-      <p class="card-name">Statistics</p>
-    </div>
+      <p class="card-name">
+        Statistics {{ "(" + (firstDate | date:'MMMM d') + " to " + (lastDate | date:'MMMM d') + ")" }}
+      </p>
+          </div>
     <div class="legend-container">
       <div class="income-container">
         <div class="income-circle"></div>
