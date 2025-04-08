@@ -43,14 +43,14 @@
               }
             </select>
             <p class="sentence">transfer to</p>
-            <select id="accounts" name="accounts" [(ngModel)]="toAccountId" required> 
+            <select id="accounts" name="from-account" [(ngModel)]="toAccountId" required> 
               @for (account of accounts; track account.id) {
                 <option value="{{ account.id }}">{{ account.name }}</option>
               }
             </select>
           } @else {
             <p class="sentence">select account</p>
-            <select id="accounts" name="accounts" [(ngModel)]="toAccountId" required> 
+            <select id="accounts" name="to-account" [(ngModel)]="toAccountId" required> 
               @for (account of accounts; track account.id) {
                 <option value="{{ account.id }}">{{ account.name }}</option>
               }

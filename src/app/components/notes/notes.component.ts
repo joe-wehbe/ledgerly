@@ -80,4 +80,8 @@ export class NotesComponent implements OnInit{
       this.closeAddNoteModal();
     }
   }
+
+  cancelQuery() {
+    this.searchQuery = '';
+  }
 }

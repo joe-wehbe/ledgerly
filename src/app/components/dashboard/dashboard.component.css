@@ -85,6 +85,7 @@ a {
   color: var(--text-color);
   background: var(--input-background);
   transition: border 0.3s ease-in-out;
+  font-family: inherit;
 }
 
 .textarea {
@@ -100,6 +101,7 @@ a {
   color: var(--text-color);
   background: var(--input-background);
   transition: border 0.3s ease-in-out;
+  font-family: inherit;
 }
 
 .textarea:focus, .note-title:focus {

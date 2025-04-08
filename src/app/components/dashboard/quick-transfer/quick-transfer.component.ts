@@ -20,7 +20,11 @@ export class QuickTransferComponent implements OnInit{
 
   ngOnInit() {
     this.accounts = this.accountsService.getAccounts();
-  }
+    if (this.accounts.length > 0) {
+      this.fromAccountId = this.accounts[0].id;
+      this.toAccountId = this.accounts.length > 1 ? this.accounts[1].id : this.accounts[0].id;
+    }
+  }  
 
   onSubmit(form: any) {
     if (form.valid) {

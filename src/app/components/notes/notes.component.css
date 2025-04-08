@@ -13,7 +13,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 60%;
 }
 
 .search-icon {
@@ -48,11 +48,34 @@
   color: #28a745;
 }
 
+.search-cancel {
+  position: absolute;
+  right: 15px;
+  color: var(--gray-text);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.search-cancel:hover {
+  color: #28a745;
+}
+
 .sort-container {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 20%;
+}
+
+.icon {
+  margin: 0;
+  width: 25px;
+  height: 25px;
+  filter: var(--icon-filter);
+}
+
+.order-text {
+  margin: auto;
 }
 
 .sort-by p {
@@ -62,7 +85,7 @@
 .sort {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 30px;
   padding: 8px;
   border-radius: 40px;
@@ -76,26 +99,51 @@
   transform: scale(1.05);
 }
 
-.add-note-circle-header {
+.add-note-header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 30px;
   padding: 8px;
   border-radius: 40px;
-  width: 13%;
+  width: 10%;
   font-size: 18px;
   border: 1px solid var(--gray-text);
 }
 
-.add-note-circle-header:hover {
+.add-note-header:hover {
   cursor: pointer;
   transform: scale(1.05);
 }
 
-.add-note-circle-header i {
+.add-note-header i {
   font-size: 20px;
   color: white;
+}
+
+.add-note-header-text {
+  margin: auto;
+}
+
+.add-note-circle-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--gray-text);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.add-note-circle-header i {
+  font-size: 20px;
+  color: var(--gray-text);
+}
+
+.add-note {
+  width: 100%;
+  height: 100%;
 }
 
 .cards-grid {
@@ -167,14 +215,14 @@ p {
   justify-content: center;
   width: 60px;
   height: 60px;
-  background-color: #28a745;
+  border: 1px solid #28a745;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .add-note-circle i {
   font-size: 30px;
-  color: white;
+  color: #28a745
 }
 
 .add-note-container:hover {
@@ -261,6 +309,10 @@ p {
   .sort-container {
     display: none;
   }
+
+  .add-note-header {
+    width: 20%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -268,8 +320,12 @@ p {
     grid-template-columns: repeat(1, 1fr);
   }
 
-  .add-note-circle-header {
+  .add-note-header {
     display: none;
+  }
+
+  .search-wrapper {
+    width: 80%;
   }
 }
 
@@ -310,6 +366,7 @@ p {
   color: var(--text-color);
   background: var(--input-background);
   transition: border 0.3s ease-in-out;
+  font-family: inherit;
 }
 
 .textarea {
@@ -325,6 +382,7 @@ p {
   color: var(--text-color);
   background: var(--input-background);
   transition: border 0.3s ease-in-out;
+  font-family: inherit;
 }
 
 .textarea:focus, .add-note-title:focus {

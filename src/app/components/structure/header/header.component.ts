@@ -46,6 +46,13 @@ export class HeaderComponent implements OnInit {
   openModal(type: 'Deposit' | 'Withdraw' | 'Transfer') {
     this.transactionType = type;
     this.isModalOpen = true;
+
+    if (type === 'Deposit' || type === 'Withdraw') {
+      this.toAccountId = this.accounts[0].id;
+    } else {
+      this.fromAccountId = this.accounts[0].id;
+      this.toAccountId = this.accounts.length > 1 ? this.accounts[1].id : this.accounts[0].id;
+    }
   }
 
   closeModal() {
