@@ -11,7 +11,7 @@ import { QuickTransferComponent } from '../../components/general/quick-transfer/
 import { AddNoteComponent } from '../../components/general/add-note/add-note.component';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-dashboard-page',
   imports: [
     TotalComponent, 
     StatisticsComponent, 
@@ -22,10 +22,10 @@ import { AddNoteComponent } from '../../components/general/add-note/add-note.com
     FormsModule,
     RouterLink
   ],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  templateUrl: './dashboard-page.component.html',
+  styleUrl: './dashboard-page.component.css'
 })
-export class DashboardComponent {
+export class DashboardPageComponent {
   selectedAccount: Account | null = null;
   title: string = '';
   note: string = '';

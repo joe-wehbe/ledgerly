@@ -27,7 +27,7 @@
         <tbody>
           @for (transaction of filteredTransactions() | slice:0:6; track transaction.id) {
             <tr>
-              <td>{{ selectedAccount()?.name !== 'All Accounts' ? selectedAccount()?.name : transaction.account.name}}</td>
+              <td>{{ transaction.account.name }}</td>
               <td>{{ transaction.date | date }}</td>
               <td>{{ transaction.date | date:'mediumTime' }}</td>
               <td>{{ transaction.amount | currency }}</td>

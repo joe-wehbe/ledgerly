@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { StatisticsComponent } from './pages/statistics/statistics.component';
-import { TransactionsComponent } from './pages/transactions/transactions.component';
-import { AccountsComponent } from './pages/accounts/accounts.component';
-import { NotesComponent } from './pages/notes/notes.component';
+import { DashboardPageComponent } from './pages/dashboard/dashboard-page.component';
+import { StatisticsPageComponent } from './pages/statistics/statistics-page.component';
+import { TransactionsPageComponent } from './pages/transactions/transactions-page.component';
+import { AccountsPageComponent } from './pages/accounts/accounts-page.component';
+import { NotesPageComponent } from './pages/notes/notes-page.component';
 
 export const routes: Routes = [
   {
@@ -13,23 +13,23 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardPageComponent
   },
   {
     path: 'statistics',
-    component: StatisticsComponent,
+    component: StatisticsPageComponent,
   },
   {
     path: 'transactions',
-    component: TransactionsComponent,
+    component: TransactionsPageComponent,
   },
   {
     path: 'accounts',
-    component: AccountsComponent,
+    component: AccountsPageComponent,
   },
   {
     path: 'notes',
-    component: NotesComponent,
+    component: NotesPageComponent,
   },
   {
     path: '**',

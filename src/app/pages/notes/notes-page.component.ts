@@ -6,12 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { AddNoteComponent } from '../../components/general/add-note/add-note.component';
 
 @Component({
-  selector: 'app-notes',
+  selector: 'app-notes-page',
   imports: [AddNoteComponent, DatePipe, SlicePipe, FormsModule],
-  templateUrl: './notes.component.html',
-  styleUrl: './notes.component.css'
+  templateUrl: './notes-page.component.html',
+  styleUrl: './notes-page.component.css'
 })
-export class NotesComponent implements OnInit{
+export class NotesPageComponent implements OnInit{
   notes: Note[] = [];
   searchQuery: string = '';
   isModalOpen = false;
