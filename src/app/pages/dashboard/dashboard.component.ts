@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { TotalComponent } from './total/total.component';
-import { StatisticsComponent } from './statistics/statistics.component';
-import { TransactionsComponent } from './transactions/transactions.component';
-import { AccountsComponent } from './accounts/accounts.component';
-import { QuickTransferComponent } from './quick-transfer/quick-transfer.component';
-import { AddNoteComponent } from './add-note/add-note.component';
+import { TransactionsComponent } from '../../components/general/transactions/transactions.component';
 import { Account } from '../../models/account.model';
 import { NotesService } from '../../services/notes.service';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { TotalComponent } from '../../components/general/total/total.component';
+import { StatisticsComponent } from '../../components/general/statistics/statistics.component';
+import { AccountsComponent } from '../../components/general/accounts/accounts.component';
+import { QuickTransferComponent } from '../../components/general/quick-transfer/quick-transfer.component';
+import { AddNoteComponent } from '../../components/general/add-note/add-note.component';
 
 @Component({
   selector: 'app-dashboard',

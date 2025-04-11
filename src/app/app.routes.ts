@@ -1,11 +1,9 @@
 import { Routes } from '@angular/router';
-import { MainComponent } from './components/main/main.component';
-import { StatisticsComponent } from './components/dashboard/statistics/statistics.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
-import { AccountsComponent } from './components/dashboard/accounts/accounts.component';
-import { AddNoteComponent } from './components/dashboard/add-note/add-note.component';
-import { NotesComponent } from './components/notes/notes.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { AccountsComponent } from './pages/accounts/accounts.component';
+import { NotesComponent } from './pages/notes/notes.component';
 
 export const routes: Routes = [
   {
