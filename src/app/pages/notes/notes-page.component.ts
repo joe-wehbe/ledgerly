@@ -60,9 +60,12 @@ export class NotesPageComponent implements OnInit{
   }
 
   deleteNote(id: number | undefined) {
-    this.notesService.deleteNote(id);
-    this.closeModal();
-    this.notes = this.notes.filter(note => note.id !== id);
+    this.snackBarService.confirm('Are you sure you want to delete this note?', 'Delete')
+    .subscribe(() => {
+      this.notesService.deleteNote(id);
+      this.closeModal();
+      this.notes = this.notes.filter(note => note.id !== id);
+    });
   }
 
   openAddNoteModal() {
