@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MenuToggleService } from '../../../services/menu-toggle.service';
+import { MenuToggleService } from '../../../services/utility/menu-toggle.service';
 
 @Component({
   selector: 'app-side-menu',

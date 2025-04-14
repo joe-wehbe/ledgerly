@@ -3,6 +3,7 @@ import { AccountsService } from '../../../services/accounts.service';
 import { Account } from '../../../models/account.model';
 import { FormsModule } from '@angular/forms';
 import { TransactionsService } from '../../../services/transactions.service';
+import { SnackbarService } from '../../../services/utility/snackbar.service';
 
 @Component({
   selector: 'app-quick-transfer',
@@ -16,7 +17,11 @@ export class QuickTransferComponent implements OnInit{
   toAccountId: number | null = null;
   submittedAmount: number | null = null;
 
-  constructor(private accountsService: AccountsService, private transactionsService: TransactionsService) { }
+  constructor(
+    private accountsService: AccountsService, 
+    private transactionsService: TransactionsService,
+    private snackBarService: SnackbarService,
+  ) { }
 
   ngOnInit() {
     this.accounts = this.accountsService.getAccounts();
@@ -27,9 +32,17 @@ export class QuickTransferComponent implements OnInit{
   }  
 
   onSubmit(form: any) {
-    if (form.valid) {
-      this.transactionsService.transfer(this.submittedAmount, this.fromAccountId, this.toAccountId)
-      form.reset();      
+    if (this.accounts.length < 2) {
+      this.snackBarService.warning("Two or more accounts are required to transfer")
+    }
+    else {
+      if (form.valid) {
+        this.transactionsService.transfer(this.submittedAmount, this.fromAccountId, this.toAccountId);
+        this.snackBarService.success("Transfer successful");
+        form.reset();      
+      } else {
+        this.snackBarService.warning("Invalid input");
+      }
     }
   }
 }

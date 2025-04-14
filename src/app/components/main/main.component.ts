@@ -3,7 +3,7 @@ import { HeaderComponent } from "../structure/header/header.component";
 import { SideMenuComponent } from "../structure/side-menu/side-menu.component";
 import { FooterComponent } from '../structure/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
-import { MenuToggleService } from '../../services/menu-toggle.service';
+import { MenuToggleService } from '../../services/utility/menu-toggle.service';
 
 @Component({
   selector: 'app-main',

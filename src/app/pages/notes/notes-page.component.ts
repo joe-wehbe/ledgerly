@@ -4,6 +4,7 @@ import { Note } from '../../models/note.model';
 import { DatePipe, SlicePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddNoteComponent } from '../../components/general/add-note/add-note.component';
+import { SnackbarService } from '../../services/utility/snackbar.service';
 
 @Component({
   selector: 'app-notes-page',
@@ -21,7 +22,7 @@ export class NotesPageComponent implements OnInit{
   title: string = '';
   note: string = '';
 
-  constructor (private notesService: NotesService) {}
+  constructor (private notesService: NotesService, private snackBarService: SnackbarService) {}
 
   ngOnInit() {
     this.notes = this.notesService.getNotes();
@@ -76,8 +77,12 @@ export class NotesPageComponent implements OnInit{
     if (form.valid) {
       this.notesService.addNote(this.title, this.note);
       this.notes = this.notesService.getNotes(); 
+      this.snackBarService.success("Note added");
       form.reset();
       this.closeAddNoteModal();
+    }
+    else {
+      this.snackBarService.warning("Invalid input");
     }
   }
 

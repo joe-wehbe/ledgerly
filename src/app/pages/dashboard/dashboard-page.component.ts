@@ -9,6 +9,7 @@ import { StatisticsComponent } from '../../components/general/statistics/statist
 import { AccountsComponent } from '../../components/general/accounts/accounts.component';
 import { QuickTransferComponent } from '../../components/general/quick-transfer/quick-transfer.component';
 import { AddNoteComponent } from '../../components/general/add-note/add-note.component';
+import { SnackbarService } from '../../services/utility/snackbar.service';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -30,7 +31,7 @@ export class DashboardPageComponent {
   title: string = '';
   note: string = '';
 
-  constructor (private notesService: NotesService) {}
+  constructor (private notesService: NotesService, private snackBarService: SnackbarService) {}
 
   updateSelectedAccount(account: Account | null) {
     setTimeout(() => {
@@ -41,7 +42,11 @@ export class DashboardPageComponent {
   onSubmit(form: any) {
     if (form.valid) {
       this.notesService.addNote(this.title, this.note);
+      this.snackBarService.success("Note added");
       form.reset();
+    }
+    else {
+      this.snackBarService.warning("Invalid input");
     }
   }
 }

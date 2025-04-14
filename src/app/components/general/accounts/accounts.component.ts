@@ -4,6 +4,7 @@ import { AccountsService } from '../../../services/accounts.service';
 import { Account } from '../../../models/account.model';
 import { CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SnackbarService } from '../../../services/utility/snackbar.service';
 
 @Component({
   selector: 'app-accounts',
@@ -22,7 +23,7 @@ export class AccountsComponent implements OnInit {
 
   @Output() selectedAccount = new EventEmitter<Account>();
 
-  constructor(private accountsService: AccountsService) {}
+  constructor(private accountsService: AccountsService, private snackBarService: SnackbarService) {}
 
   ngOnInit() {
     setTimeout(() => {
@@ -68,8 +69,12 @@ export class AccountsComponent implements OnInit {
     if (form.valid) {
       this.accountsService.addAccount(this.accountName, this.initialBalance);
       this.accounts = this.accountsService.getAccounts();
+      this.snackBarService.success("Account added");
       form.reset();
       this.closeModal();
+    } 
+    else {
+      this.snackBarService.warning("Invalid input");
     }
   }
 }

@@ -40,3 +40,8 @@ body {
 html, body {
   margin: 0;
 }
+
+.snackbar {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}

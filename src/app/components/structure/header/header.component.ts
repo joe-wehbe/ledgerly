@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuToggleService } from '../../../services/menu-toggle.service';
+import { MenuToggleService } from '../../../services/utility/menu-toggle.service';
 import { Account } from '../../../models/account.model';
 import { AccountsService } from '../../../services/accounts.service';
 import { FormsModule } from '@angular/forms';
 import { TransactionsService } from '../../../services/transactions.service';
+import { SnackbarService } from '../../../services/utility/snackbar.service';
 
 @Component({
   standalone: true,
@@ -21,7 +22,11 @@ export class HeaderComponent implements OnInit {
   toAccountId: number | null = null;
   submittedAmount: number | null = null;
 
-  constructor(private menuToggleService: MenuToggleService, private accountsService: AccountsService, private transactionsService: TransactionsService) {
+  constructor(
+    private menuToggleService: MenuToggleService, 
+    private accountsService: AccountsService, 
+    private transactionsService: TransactionsService,
+    private snackbarService: SnackbarService) {
     this.applyTheme();
   }
 
@@ -44,14 +49,22 @@ export class HeaderComponent implements OnInit {
   }
 
   openModal(type: 'Deposit' | 'Withdraw' | 'Transfer') {
-    this.transactionType = type;
-    this.isModalOpen = true;
-
-    if (type === 'Deposit' || type === 'Withdraw') {
-      this.toAccountId = this.accounts[0].id;
-    } else {
-      this.fromAccountId = this.accounts[0].id;
-      this.toAccountId = this.accounts.length > 1 ? this.accounts[1].id : this.accounts[0].id;
+    if (this.accounts.length === 0) {
+      this.snackbarService.warning('Please add an account first');
+    } 
+    else if (this.accounts.length === 1 && type === 'Transfer') {
+      this.snackbarService.warning('Two or more accounts are required to transfer');
+    }
+    else {
+      this.transactionType = type;
+      this.isModalOpen = true;
+  
+      if (type === 'Deposit' || type === 'Withdraw') {
+        this.toAccountId = this.accounts[0].id;
+      } else {
+        this.fromAccountId = this.accounts[0].id;
+        this.toAccountId = this.accounts.length > 1 ? this.accounts[1].id : this.accounts[0].id;
+      }
     }
   }
 
