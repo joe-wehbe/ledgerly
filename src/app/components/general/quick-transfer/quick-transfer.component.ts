@@ -34,18 +34,25 @@ export class QuickTransferComponent implements OnInit{
   onSubmit(form: any) {
     if (this.accounts.length < 2) {
       this.snackBarService.warning("Two or more accounts are required to transfer")
+      return;
     }
     else {
       if (form.valid) {
-        const account = this.accounts.find(account => account.id == this.fromAccountId);
-        if (account!.balance < this.submittedAmount!) {
-          this.snackBarService.warning("Entered amount exceeds account balance!");
+        if (this.fromAccountId == this.toAccountId) {
+          this.snackBarService.warning("Cannot transfer from and to the same account");
           return;
         }
         else {
-          this.transactionsService.transfer(this.submittedAmount, this.fromAccountId, this.toAccountId);
-          this.snackBarService.success("Transfer successful");
-          form.reset();  
+          const account = this.accounts.find(account => account.id == this.fromAccountId);
+          if (account!.balance < this.submittedAmount!) {
+            this.snackBarService.warning("Entered amount exceeds account balance!");
+            return;
+          }
+          else {
+            this.transactionsService.transfer(this.submittedAmount, this.fromAccountId, this.toAccountId);
+            this.snackBarService.success("Transfer successful");
+            form.reset();  
+          }
         }
       } else {
         this.snackBarService.warning("Please enter the amount");

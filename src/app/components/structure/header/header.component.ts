@@ -88,13 +88,19 @@ export class HeaderComponent implements OnInit {
         }
       } 
       else {
-        const account = this.accounts.find(account => account.id == this.fromAccountId);
-        if (account!.balance < this.submittedAmount!) {
-          this.snackBarService.warning("Entered amount exceeds account balance!");
+        if (this.fromAccountId == this.toAccountId) {
+          this.snackBarService.warning("Cannot transfer from and to the same account");
           return;
         }
         else {
-          this.transactionsService.transfer(this.submittedAmount, this.fromAccountId, this.toAccountId);
+          const account = this.accounts.find(account => account.id == this.fromAccountId);
+          if (account!.balance < this.submittedAmount!) {
+            this.snackBarService.warning("Entered amount exceeds account balance!");
+            return;
+          }
+          else {
+            this.transactionsService.transfer(this.submittedAmount, this.fromAccountId, this.toAccountId);
+          }
         }
       }
       this.snackBarService.success("Transaction successful");
