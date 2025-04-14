@@ -67,13 +67,24 @@ export class AccountsComponent implements OnInit {
 
   onSubmit(form: any) {
     if (form.valid) {
-      this.accountsService.addAccount(this.accountName, this.initialBalance);
-      this.accounts = this.accountsService.getAccounts();
-      this.snackBarService.success("Account added");
-      form.reset();
-      this.closeModal();
-    } 
-    else {
+      this.accountName = this.accountName.split(' ').filter(word => word.trim() !== '')
+        .map(word => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+  
+      if (this.accountName != '') {
+        for (let i = 0; i < this.accounts.length; i++) {
+          if (this.accounts[i].name === this.accountName) {
+            this.snackBarService.warning("An account with this name already exists");
+            return;
+          }
+        }
+  
+        this.accountsService.addAccount(this.accountName, this.initialBalance);
+        this.accounts = this.accountsService.getAccounts();
+        this.snackBarService.success("Account added");
+        form.reset();
+        this.closeModal();
+      }
+    } else {
       this.snackBarService.warning("Invalid input");
     }
   }
