@@ -1,4 +1,5 @@
 .layout-grid {
+  min-height: 98vh;
   display: grid;
   grid-template-columns: 215px 1fr;
 }
