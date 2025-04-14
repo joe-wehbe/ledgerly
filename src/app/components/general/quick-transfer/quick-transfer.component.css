@@ -58,6 +58,7 @@ input {
   background: var(--input-background);
   border: 1px solid var(--border-lines-color);
   transition: border 0.3s ease-in-out;
+  font-family: inherit;
 }
 
 input::placeholder {
@@ -79,6 +80,7 @@ select {
   background: var(--input-background);
   border: 1px solid var(--border-lines-color);
   transition: border 0.3s ease-in-out;
+  font-family: inherit;
 }
 
 .button {
