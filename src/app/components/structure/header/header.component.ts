@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     private menuToggleService: MenuToggleService, 
     private accountsService: AccountsService, 
     private transactionsService: TransactionsService,
-    private snackbarService: SnackbarService) {
+    private snackBarService: SnackbarService) {
     this.applyTheme();
   }
 
@@ -49,11 +49,11 @@ export class HeaderComponent implements OnInit {
   }
 
   openModal(type: 'Deposit' | 'Withdraw' | 'Transfer') {
-    if (this.accounts.length === 0) {
-      this.snackbarService.warning('Please add an account first');
+    if (this.accounts.length === 0 && type !== 'Transfer') {
+      this.snackBarService.warning('Please add an account first');
     } 
-    else if (this.accounts.length === 1 && type === 'Transfer') {
-      this.snackbarService.warning('Two or more accounts are required to transfer');
+    else if ((this.accounts.length === 0 || this.accounts.length === 1) && type === 'Transfer') {
+      this.snackBarService.warning('Two or more accounts are required to transfer');
     }
     else {
       this.transactionType = type;
@@ -73,18 +73,36 @@ export class HeaderComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    if (form.valid) {
+    if (form.valid && this.submittedAmount! > 0) {
       if (this.transactionType === 'Deposit') {
         this.transactionsService.deposit(this.submittedAmount, this.toAccountId, false);
       } 
       else if (this.transactionType === 'Withdraw') {
-        this.transactionsService.withdraw(this.submittedAmount, this.toAccountId, false);
+        const account = this.accounts.find(account => account.id == this.toAccountId);
+        if (account!.balance < this.submittedAmount!) {
+          this.snackBarService.warning("Entered amount exceeds account balance!");
+          return;
+        }
+        else {
+          this.transactionsService.withdraw(this.submittedAmount, this.toAccountId, false);
+        }
       } 
       else {
-        this.transactionsService.transfer(this.submittedAmount, this.fromAccountId, this.toAccountId);
+        const account = this.accounts.find(account => account.id == this.fromAccountId);
+        if (account!.balance < this.submittedAmount!) {
+          this.snackBarService.warning("Entered amount exceeds account balance!");
+          return;
+        }
+        else {
+          this.transactionsService.transfer(this.submittedAmount, this.fromAccountId, this.toAccountId);
+        }
       }
+      this.snackBarService.success("Transaction successful");
       form.reset();   
       this.closeModal();   
+    } 
+    else {
+      this.snackBarService.warning("Please enter the amount");
     }
   }
 }

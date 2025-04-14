@@ -37,11 +37,18 @@ export class QuickTransferComponent implements OnInit{
     }
     else {
       if (form.valid) {
-        this.transactionsService.transfer(this.submittedAmount, this.fromAccountId, this.toAccountId);
-        this.snackBarService.success("Transfer successful");
-        form.reset();      
+        const account = this.accounts.find(account => account.id == this.fromAccountId);
+        if (account!.balance < this.submittedAmount!) {
+          this.snackBarService.warning("Entered amount exceeds account balance!");
+          return;
+        }
+        else {
+          this.transactionsService.transfer(this.submittedAmount, this.fromAccountId, this.toAccountId);
+          this.snackBarService.success("Transfer successful");
+          form.reset();  
+        }
       } else {
-        this.snackBarService.warning("Invalid input");
+        this.snackBarService.warning("Please enter the amount");
       }
     }
   }
