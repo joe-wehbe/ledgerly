@@ -3,5 +3,6 @@ export interface Account {
   name: string,
   balance: number,
   income: number,
-  expenses: number
+  expenses: number,
+  createdAt: Date | null
 }

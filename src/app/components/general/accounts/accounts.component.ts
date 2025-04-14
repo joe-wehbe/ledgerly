@@ -50,6 +50,7 @@ export class AccountsComponent implements OnInit {
           balance: this.accountsService.getTotalBalance(), 
           income: this.accountsService.getTotalIncome(), 
           expenses: this.accountsService.getTotalExpenses(),
+          createdAt: null,
         }
       )
     }
