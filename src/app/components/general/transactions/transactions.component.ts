@@ -15,6 +15,7 @@ export class TransactionsComponent implements OnInit {
   isLoading = true;
   transactions = signal<Transaction[]>([]);
   selectedAccount = input.required<Account | null>();
+  parentComponent = input.required<'Dashboard' | 'Transactions'>();
 
   constructor(private transactionsService: TransactionsService) {}
 
@@ -27,11 +28,11 @@ export class TransactionsComponent implements OnInit {
   }
 
   filteredTransactions = computed(() => {
-    return this.transactions()
-      .filter(transaction => 
-        this.selectedAccount()?.id ? transaction.account.id === this.selectedAccount()?.id : true
-      )
+    const filtered = this.transactions()
+      .filter(transaction =>
+        this.selectedAccount()?.id ? transaction.account.id === this.selectedAccount()?.id : true)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  });
   
+    return this.parentComponent() === 'Dashboard' ? filtered.slice(0, 6) : filtered;
+  });  
 }

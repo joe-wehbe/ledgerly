@@ -1,10 +1,13 @@
 <div class="search-bar-container">
   <!-- <p class="notes-number">{{ filteredNotes().length == 1 ? '1 note' : filteredNotes().length + ' notes'}}</p> -->
+  <p class="notes-number"> 10 Transactions </p>
+
   <div class="search-wrapper">
     <i class="fa fa-search search-icon"></i>
-    <input type="text" placeholder="Search by title, text, date..." class="search-bar" [(ngModel)]="searchQuery">
+    <input type="text" placeholder="Search by account, date, time..." class="search-bar" [(ngModel)]="searchQuery">
     <span class="search-cancel" (click)="cancelQuery()">Cancel</span>
   </div>
+
   <div class="sort-container">
     <div class="sort-by">
       <p> Sort by </p>
@@ -14,12 +17,24 @@
       <p class="order-text"> {{ newest ? 'newest to oldest' : 'oldest to newest'}} </p>
     </div>
   </div>
-  <div class="add-note-header">
-    <div class="add-note-circle-header">
-      <i class="fa fa-plus"></i>
+
+  <div class="transaction-type-container">
+    <div class="transaction-type">
+      <p> Type</p>
     </div>
-    <p class="add-note-header-text">Add note</p>
+    <div class="type" (click)="displayByType()">
+      <!-- <img class="icon" [src]="type == 'All' ? 'icons/bounceup.png' : 'icons/bouncedown.png'" alt="bounce"> -->
+      <p class="order-text"> 
+        @if (type === 'All') {
+          All
+        } @else if (type == 'Income') {
+          Income
+        } @else {
+          Expenses
+        }
+      </p>
+    </div>
   </div>
 </div>
 
-<app-transactions [selectedAccount]="null"></app-transactions>
+<app-transactions [selectedAccount]="null" [parentComponent]="'Transactions'"></app-transactions>
