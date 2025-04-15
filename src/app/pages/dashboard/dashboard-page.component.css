@@ -7,7 +7,26 @@
 .left-column, .right-column {
   display: flex;
   flex-direction: column;
+  /* height: 89vh; */
   gap: 10px;
+}
+
+.accounts-component, .transfer-component, .add-note-component {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.accounts-component {
+  flex-basis: 36.5%;
+}
+
+.transfer-component {
+  flex-basis: 30%;
+}
+
+.add-note-component {
+  flex-basis: 10%;
 }
 
 @media (max-width: 1000px) {
@@ -22,6 +41,7 @@
 }
 
 .card {
+  flex: 1;
   padding: 10px;
   border-radius: 10px;
   background: var(--cards-background);

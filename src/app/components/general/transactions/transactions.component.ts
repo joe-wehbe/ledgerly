@@ -2,12 +2,12 @@ import { Component, computed, input, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TransactionsService } from '../../../services/transactions.service';
 import { Transaction } from '../../../models/transaction.model';
-import { CurrencyPipe, DatePipe, SlicePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Account } from '../../../models/account.model';
 
 @Component({
   selector: 'app-transactions',
-  imports: [RouterLink, DatePipe, CurrencyPipe, SlicePipe],
+  imports: [RouterLink, DatePipe, CurrencyPipe],
   templateUrl: './transactions.component.html',
   styleUrl: './transactions.component.css'
 })

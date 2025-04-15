@@ -8,8 +8,8 @@
     <app-accounts class="accounts-component" (selectedAccount)="updateSelectedAccount($event)"></app-accounts>
     <app-quick-transfer class="transfer-component"></app-quick-transfer>
     <app-add-note class="add-note-component">
-      <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-        <div class="card">
+      <div class="card">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
           <div class="upper-container">
             <div class="icon-name-container">
               <img class="icon" src="icons/notes.png" alt="trans">
@@ -24,8 +24,8 @@
             <textarea class="textarea" name="note" placeholder="Write your note here..." [(ngModel)]="note" maxlength="1120" required></textarea>
             <button type="submit" class="button">Add</button>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </app-add-note>
   </div>
 </div>
