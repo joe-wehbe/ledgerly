@@ -6,7 +6,7 @@
     </div>
     @if (parentComponent() == 'Dashboard') {
       <a routerLink="../transactions">
-        <p class="view-all">View all</p>
+        <p class="view-all">View all (+{{ transactions().length - filteredTransactions().length}})</p>
       </a>
     }
   </div>

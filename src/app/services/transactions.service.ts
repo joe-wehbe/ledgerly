@@ -8,11 +8,11 @@ import { Transaction } from '../models/transaction.model'
 })
 export class TransactionsService {
   accounts: Account[] = [];
-  transcations: Transaction[] = [];
+  transactions: Transaction[] = [];
 
   constructor(private accountsService: AccountsService) { 
     this.accounts = this.accountsService.getAccounts();
-    this.transcations = this.getTransactions();
+    this.transactions = this.getTransactions();
   }
 
   deposit(amount: number | null, accountId: number | null, isTransfer: boolean) {
@@ -22,15 +22,15 @@ export class TransactionsService {
       account.balance += amount!;
       localStorage.setItem('accounts', JSON.stringify(this.accounts));
 
-      this.transcations.push({
-        id: this.transcations.length > 0 ? this.transcations[this.transcations.length-1].id + 1 : 1,
+      this.transactions.push({
+        id: this.transactions.length > 0 ? this.transactions[this.transactions.length-1].id + 1 : 1,
         account: account,
         date: new Date(),
         amount: amount,
         type: 'income',
       });
 
-      localStorage.setItem('transactions', JSON.stringify(this.transcations));
+      localStorage.setItem('transactions', JSON.stringify(this.transactions));
     }
   }
 
@@ -41,15 +41,15 @@ export class TransactionsService {
       account.balance -= amount!;
       localStorage.setItem('accounts', JSON.stringify(this.accounts));
 
-      this.transcations.push({
-        id: this.transcations[this.transcations.length-1].id + 1,
+      this.transactions.push({
+        id: this.transactions[this.transactions.length-1].id + 1,
         account: account,
         date: new Date(),
         amount: amount,
         type: 'expense',
       });
 
-      localStorage.setItem('transactions', JSON.stringify(this.transcations));
+      localStorage.setItem('transactions', JSON.stringify(this.transactions));
     }
   }
 
@@ -60,5 +60,31 @@ export class TransactionsService {
 
   getTransactions() {
     return JSON.parse(localStorage.getItem('transactions') || '[]');
+  }
+
+  filterTransactions(searchQuery: string, type: 'All' | 'Income' | 'Expense', newest: boolean): Transaction[] {
+    const query = searchQuery.toLowerCase();
+    let filtered: Transaction[] = this.transactions;
+
+    if (query.trim() !== '') {
+      filtered = filtered.filter(transaction => {
+        const accountMatch = transaction.account.name.toLowerCase().includes(query);
+        const dateMatch = new Date(transaction.date).toLocaleDateString().toLowerCase().includes(query);
+        const timeMatch = new Date(transaction.date).toLocaleTimeString().toLowerCase().includes(query);
+        return accountMatch || dateMatch || timeMatch;
+      });
+    }
+
+    if (type !== 'All') {
+      filtered = filtered.filter(t => t.type.toLowerCase() === type.toLowerCase());
+    }
+
+    filtered = filtered.sort((a, b) => {
+      const dateA = new Date(a.date).getTime();
+      const dateB = new Date(b.date).getTime();
+      return newest ? dateB - dateA : dateA - dateB;
+    });
+
+    return filtered;
   }
 }

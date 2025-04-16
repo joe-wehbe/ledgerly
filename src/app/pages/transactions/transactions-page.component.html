@@ -1,33 +1,28 @@
 <div class="search-bar-container">
-  <!-- <p class="notes-number">{{ filteredNotes().length == 1 ? '1 note' : filteredNotes().length + ' notes'}}</p> -->
-  <p class="notes-number"> 10 Transactions </p>
-
+  <p class="notes-number">{{ count() == 1 ? '1 transaction' : count() + ' transactions' }}</p>
   <div class="search-wrapper">
     <i class="fa fa-search search-icon"></i>
     <input type="text" placeholder="Search by account, date, time..." class="search-bar" [(ngModel)]="searchQuery">
     <span class="search-cancel" (click)="cancelQuery()">Cancel</span>
   </div>
-
   <div class="sort-container">
     <div class="sort-by">
       <p> Sort by </p>
     </div>
     <div class="sort" (click)="sortByDate()">
-      <img class="icon" [src]="newest ? 'icons/deposit.png' : 'icons/withdraw.png'" alt="dep">
-      <p class="order-text"> {{ newest ? 'newest to oldest' : 'oldest to newest'}} </p>
+      <img class="icon" [src]="newest() ? 'icons/deposit.png' : 'icons/withdraw.png'" alt="dep">
+      <p class="order-text"> {{ newest() ? 'newest to oldest' : 'oldest to newest'}} </p>
     </div>
   </div>
-
   <div class="transaction-type-container">
     <div class="transaction-type">
       <p> Type</p>
     </div>
     <div class="type" (click)="displayByType()">
-      <!-- <img class="icon" [src]="type == 'All' ? 'icons/bounceup.png' : 'icons/bouncedown.png'" alt="bounce"> -->
       <p class="order-text"> 
-        @if (type === 'All') {
+        @if (type() === 'All') {
           All
-        } @else if (type == 'Income') {
+        } @else if (type() == 'Income') {
           Income
         } @else {
           Expenses
@@ -40,7 +35,7 @@
 <app-transactions 
   [selectedAccount]="null" 
   [parentComponent]="'Transactions'"
-  [searchQuery]="searchQuery"
-  [type]="type"
-  [newest]="newest">
+  [searchQuery]="searchQuery()"
+  [type]="type()"
+  [newest]="newest()">
 </app-transactions>
