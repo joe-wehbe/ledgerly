@@ -34,7 +34,7 @@
   .menu-toggle {
     width: 25px;
     height: 25px;
-    filter: var(--clicked-menu-icon);
+    filter: var(--menu-toggle-filter);
   }
 }
 

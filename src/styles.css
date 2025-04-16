@@ -30,6 +30,7 @@
   --expense-chip-background: hsl(356, 33%, 27%);
   --expense-chip-color: rgb(255, 0, 0);
   --icon-filter: brightness(0) invert(1);
+  --menu-toggle-filter: invert(1);
 }
 
 html, body {

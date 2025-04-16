@@ -40,7 +40,7 @@ export class HeaderComponent implements OnInit {
     this.applyTheme();
   }
 
-  private applyTheme(): void {
+  applyTheme(): void {
     this.isDarkMode ? document.body.classList.add('dark-theme') : document.body.classList.remove('dark-theme');
   }
 
