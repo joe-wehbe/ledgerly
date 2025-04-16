@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { DashboardPageComponent } from './pages/dashboard/dashboard-page.component';
-import { StatisticsPageComponent } from './pages/statistics/statistics-page.component';
 import { TransactionsPageComponent } from './pages/transactions/transactions-page.component';
 import { AccountsPageComponent } from './pages/accounts/accounts-page.component';
 import { NotesPageComponent } from './pages/notes/notes-page.component';
@@ -14,10 +13,6 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardPageComponent
-  },
-  {
-    path: 'statistics',
-    component: StatisticsPageComponent,
   },
   {
     path: 'transactions',

@@ -10,12 +10,6 @@
           <img class="icon" src="icons/dashboard.png" alt="Dashboard">
           <p class="text">Dashboard</p>
         </div>
-      </a>      
-      <a routerLink="statistics" routerLinkActive="selected" (click)="toggleSideMenu()">
-        <div class="item">
-          <img class="icon" src="icons/statistics.png" alt="Stats"><img>
-          <p class="text">Statistics</p>
-        </div>
       </a>
       <a routerLink="transactions" routerLinkActive="selected" (click)="toggleSideMenu()">
         <div class="item">
@@ -41,13 +35,6 @@
       <div class="title">
         <p class="export-text">Export Transactions</p>
       </div>
-      <!-- <p>Select account</p> -->
-      <!-- <select id="from-account" name="fromAccount" [(ngModel)]="selectedAccountId" required>
-        @for (account of accounts; track account.id) {
-          <option value="{{ account.id }}">{{ account.name }}</option>
-        }
-      </select>
-      <button class="button" type="submit">Export</button> -->
       <img class="export-img" src="icons/export.png">
     </div>
   </div>
