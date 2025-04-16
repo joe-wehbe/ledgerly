@@ -63,28 +63,34 @@ export class TransactionsService {
   }
 
   filterTransactions(searchQuery: string, type: 'All' | 'Income' | 'Expense', newest: boolean): Transaction[] {
-    const query = searchQuery.toLowerCase();
-    let filtered: Transaction[] = this.transactions;
-
-    if (query.trim() !== '') {
-      filtered = filtered.filter(transaction => {
-        const accountMatch = transaction.account.name.toLowerCase().includes(query);
-        const dateMatch = new Date(transaction.date).toLocaleDateString().toLowerCase().includes(query);
-        const timeMatch = new Date(transaction.date).toLocaleTimeString().toLowerCase().includes(query);
-        return accountMatch || dateMatch || timeMatch;
-      });
-    }
-
+    const query = searchQuery.toLowerCase().trim();
+  
+    let filtered = this.transactions.filter(transaction => {
+      const dateObj = new Date(transaction.date);
+      const dateStr = transaction.date instanceof Date ? transaction.date.toISOString().split('T')[0] : transaction.date;
+      const fullMonthFormat = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' }).format(dateObj).toLowerCase();
+      const shortMonthFormat = new Intl.DateTimeFormat('en-US', {month: 'short', day: 'numeric', year: 'numeric'}).format(dateObj).toLowerCase();
+      const timeFormat = new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true }).format(dateObj).toLowerCase();
+  
+      return (
+        transaction.account.name.toLowerCase().includes(query) ||
+        dateStr.includes(query) ||
+        fullMonthFormat.includes(query) ||
+        shortMonthFormat.includes(query) ||
+        timeFormat.includes(query)
+      );
+    });
+  
     if (type !== 'All') {
       filtered = filtered.filter(t => t.type.toLowerCase() === type.toLowerCase());
     }
-
+  
     filtered = filtered.sort((a, b) => {
       const dateA = new Date(a.date).getTime();
       const dateB = new Date(b.date).getTime();
       return newest ? dateB - dateA : dateA - dateB;
     });
-
+  
     return filtered;
   }
 }

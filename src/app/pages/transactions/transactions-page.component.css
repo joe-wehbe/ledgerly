@@ -66,13 +66,13 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  flex-grow: 1;
-  /* width: 20%; */
+  /* flex-grow: 1; */
+  width: 20%;
 }
 
-/* .transaction-type-container {
-  width: 25%;
-} */
+.transaction-type-container {
+  width: 15%;
+}
 
 .icon {
   margin: 0;

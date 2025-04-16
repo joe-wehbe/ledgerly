@@ -32,6 +32,12 @@ export class TransactionsComponent implements OnInit {
   }
 
   filteredTransactions = computed(() => {
+    if (this.parentComponent() === 'Dashboard') {
+      return this.transactions()
+      .filter(transaction => this.selectedAccount()?.id ? transaction.account.id === this.selectedAccount()?.id : true)
+      .slice(0,6)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    }
     return this.transactionsService.filterTransactions(this.searchQuery(), this.type(), this.newest());
   });
 }
