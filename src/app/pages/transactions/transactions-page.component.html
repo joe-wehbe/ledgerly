@@ -37,4 +37,10 @@
   </div>
 </div>
 
-<app-transactions [selectedAccount]="null" [parentComponent]="'Transactions'"></app-transactions>
+<app-transactions 
+  [selectedAccount]="null" 
+  [parentComponent]="'Transactions'"
+  [searchQuery]="searchQuery"
+  [type]="type"
+  [newest]="newest">
+</app-transactions>

@@ -35,10 +35,10 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 2;
+  z-index: 1;
 }
 
 .left-side-container {
-  z-index: 3;
+  z-index: 2;
 }
 

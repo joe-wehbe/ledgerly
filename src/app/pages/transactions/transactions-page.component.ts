@@ -10,8 +10,12 @@ import { FormsModule } from '@angular/forms';
 })
 export class TransactionsPageComponent {
   newest = true;
-  type: 'All' | 'Income' | 'Expenses' = 'All';
+  type: 'All' | 'Income' | 'Expense' = 'All';
   searchQuery: string = '';
+
+  cancelQuery() {
+    this.searchQuery = '';
+  }
 
   sortByDate() {
     this.newest = !this.newest;
@@ -19,11 +23,7 @@ export class TransactionsPageComponent {
 
   displayByType() {
     if (this.type === 'All') this.type = 'Income';
-    else if (this.type === 'Income') this.type = 'Expenses'
-    else if (this.type === 'Expenses') this.type = 'All';
-  }
-
-  cancelQuery() {
-    this.searchQuery = '';
+    else if (this.type === 'Income') this.type = 'Expense'
+    else if (this.type === 'Expense') this.type = 'All';
   }
 }

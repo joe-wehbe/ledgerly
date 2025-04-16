@@ -1,9 +1,12 @@
 .card {
-  height: 100%;
   padding: 10px;
-  height: 330px;
+  max-height: 79.5vh;
   border-radius: 10px;
   background: var(--cards-background);
+}
+
+.scrollable {
+  overflow-y: scroll;
 }
 
 .upper-container {
