@@ -1,6 +1,6 @@
 .content-grid {
   display: grid;
-  grid-template-columns: 70% 29.2%;
+  grid-template-columns: 70% 29.3%;
   gap: 10px;
 }
 
