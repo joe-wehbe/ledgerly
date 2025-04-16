@@ -41,4 +41,8 @@ export class MainComponent {
      this.menuToggleService.closeMenu();
     }
   }
+
+  closeMenu() {
+    this.menuToggleService.toggleMenu();
+  }
 }
