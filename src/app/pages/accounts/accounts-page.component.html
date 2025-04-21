@@ -1,1 +1,92 @@
-<p>accounts works!</p>
+<div class="search-bar-container">
+  <p class="accounts-number">{{ filteredAccounts().length === 1 ? '1 Account' : filteredAccounts().length + ' Accounts' }}</p>
+  <div class="search-wrapper">
+    <i class="fa fa-search search-icon"></i>
+    <input type="text" placeholder="Search account..." class="search-bar" [(ngModel)]="searchQuery">
+    <span class="search-cancel" (click)="cancelQuery()">Cancel</span>
+  </div>
+  <div class="sort-container">
+    <div class="sort-by">
+      <p> Sort by </p>
+    </div>
+    <div class="sort" (click)="sortByDate()">
+      <img class="icon" [src]="newest ? 'icons/deposit.png' : 'icons/withdraw.png'" alt="dep">
+      <p class="order-text"> {{ newest ? 'newest to oldest' : 'oldest to newest'}} </p>
+    </div>
+  </div>
+  <div class="add-account-container" (click)="openModal()">
+    <div class="add-account-circle">
+      <i class="fa fa-plus"></i>
+    </div>
+    <p class="add-account-text">Add account</p>
+  </div>
+</div>
+
+<div class="card">
+  <div class="upper-container">
+  </div>
+  @if (isLoading) {
+    <div class="loading-container">
+      <div class="spinner"></div>
+    </div> 
+  } @else {
+    @if (accounts.length > 0) {
+      <table class="accounts-table">
+        <thead>
+          <tr>
+            <th>Account</th>
+            <th>Created at</th>
+            <th>Balance</th>
+            <th>Income</th>
+            <th>Expenses</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (account of filteredAccounts(); track account.id) {
+            <tr class="data-row">
+              <td>{{ account.name }}</td>
+              <td>{{ account.createdAt | date }}</td>
+              <td>{{ account.balance | currency }}</td>
+              <td>{{ account.income | currency }}</td>
+              <td>{{ account.expenses | currency }}</td>
+              <td class="action-icons">
+                <img class="edit-icon" src="icons/edit.png" alt="edt">
+                <img class="delete-icon" src="icons/delete.png" alt="del">
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>   
+    } @else {
+      <div class="no-accounts">
+        <p class="text">No accounts yet</p>
+      </div>
+    }
+  }
+</div>
+
+@if (isModalOpen) {
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="modal-overlay" (click)="closeModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <p class="modal-title">New Account</p>      
+        <div class="modal-container">
+            <p class="sentence">Account Name</p>
+            <div class="input-container">
+              <input class="name-input" type="text" name="account-name" placeholder="Ex: cash, wallet, savings..." maxlength="16" [(ngModel)]="accountName" required>
+            </div>
+          <p class="sentence">Initial Balance</p>
+          <div class="input-container">
+            <span class="currency-symbol">$</span>
+            <input class="balance-input" type="number" name="amount" placeholder="0.00" [(ngModel)]="initialBalance">
+          </div>
+        </div>
+        <div class="modal-buttons">
+          <button class="cancel-button" (click)="closeModal()">Cancel</button>
+          <button type="submit" class="confirm-button">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </form> 
+}
