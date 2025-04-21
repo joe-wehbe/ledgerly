@@ -1,5 +1,5 @@
 <div class="search-bar-container">
-  <p class="notes-number">{{ count() == 1 ? '1 transaction' : count() + ' transactions' }}</p>
+  <p class="transactions-number">{{ count() == 1 ? '1 transaction' : count() + ' transactions' }}</p>
   <div class="search-wrapper">
     <i class="fa fa-search search-icon"></i>
     <input type="text" placeholder="Search by account, date, time..." class="search-bar" [(ngModel)]="searchQuery">

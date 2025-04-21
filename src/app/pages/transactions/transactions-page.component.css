@@ -6,7 +6,7 @@
   gap: 10px
 }
 
-.notes-number {
+.transactions-number {
   font-size: 1.8em;
   margin: 0;
 }
@@ -106,7 +106,7 @@
 }
 
 @media (max-width: 1300px) {
-  .notes-number {
+  .transactions-number {
     display: none;
   }
 
