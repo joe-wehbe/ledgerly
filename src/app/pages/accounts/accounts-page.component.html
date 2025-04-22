@@ -82,7 +82,7 @@
               <td>{{ account.expenses | currency }}</td>
               <td class="action-icons">
                 <img class="edit-icon" src="icons/edit.png" alt="edt">
-                <img class="delete-icon" src="icons/delete.png" alt="del">
+                <img class="delete-icon" src="icons/delete.png" alt="del" (click)="deleteAccount(account.id)">
               </td>
             </tr>
           }

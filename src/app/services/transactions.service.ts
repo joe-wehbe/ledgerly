@@ -62,6 +62,11 @@ export class TransactionsService {
     return JSON.parse(localStorage.getItem('transactions') || '[]');
   }
 
+  deleteAccountTransactions(id: number | undefined) {
+    const newTransactions = this.getTransactions().filter((transaction: Transaction) => transaction.account.id !== id);
+    localStorage.setItem('transactions', JSON.stringify(newTransactions));
+  }
+
   filterTransactions(searchQuery: string, type: 'All' | 'Income' | 'Expense', newest: boolean): Transaction[] {
     const query = searchQuery.toLowerCase().trim();
   

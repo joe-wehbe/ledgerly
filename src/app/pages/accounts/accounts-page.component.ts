@@ -4,6 +4,7 @@ import { Account } from '../../models/account.model';
 import { AccountsService } from '../../services/accounts.service';
 import { FormsModule } from '@angular/forms';
 import { SnackbarService } from '../../services/utility/snackbar.service';
+import { TransactionsService } from '../../services/transactions.service';
 
 @Component({
   selector: 'app-accounts-page',
@@ -20,7 +21,11 @@ export class AccountsPageComponent {
   accountName: string = '';
   initialBalance: number = 0;
 
-  constructor(private accountsService: AccountsService, private snackBarService: SnackbarService) {}
+  constructor(
+    private accountsService: AccountsService, 
+    private snackBarService: SnackbarService,
+    private transactionsService: TransactionsService
+  ) {}
 
   ngOnInit() {
     setTimeout(() => {
@@ -79,5 +84,15 @@ export class AccountsPageComponent {
     } else {
       this.snackBarService.warning("Invalid input");
     }
+  }
+
+  deleteAccount(id: number | undefined) {
+    this.snackBarService.confirm('Are you sure you want to delete this account and its transactions?', 'Delete')
+    .subscribe(() => {
+      this.accountsService.deleteAccount(id);
+      this.transactionsService.deleteAccountTransactions(id);
+      this.closeModal();
+      this.accounts = this.accounts.filter(account => account.id !== id);
+    });
   }
 }

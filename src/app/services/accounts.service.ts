@@ -19,8 +19,9 @@ export class AccountsService {
     localStorage.setItem('accounts', JSON.stringify(accounts));  
   }
 
-  deleteAccount() {
-
+  deleteAccount(id: number | undefined) {
+    const newAccounts = this.getAccounts().filter((account: Account) => account.id !== id);
+    localStorage.setItem('accounts', JSON.stringify(newAccounts))
   }
 
   getTotalBalance() {
