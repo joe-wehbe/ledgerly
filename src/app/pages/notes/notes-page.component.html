@@ -1,8 +1,8 @@
 <div class="search-bar-container">
-  <p class="notes-number">{{ filteredNotes().length == 1 ? '1 note' : filteredNotes().length + ' notes'}}</p>
+  <p class="notes-number">{{ filteredNotes().length === 1 ? '1 Note' : filteredNotes().length + ' Notes' }}</p>
   <div class="search-wrapper">
     <i class="fa fa-search search-icon"></i>
-    <input type="text" placeholder="Search by title, text, date..." class="search-bar" [(ngModel)]="searchQuery">
+    <input type="text" placeholder="Search account..." class="search-bar" [(ngModel)]="searchQuery">
     <span class="search-cancel" (click)="cancelQuery()">Cancel</span>
   </div>
   <div class="sort-container">
@@ -14,11 +14,11 @@
       <p class="order-text"> {{ newest ? 'newest to oldest' : 'oldest to newest'}} </p>
     </div>
   </div>
-  <div class="add-note-header" (click)="openAddNoteModal()">
+  <div class="add-note-container-header" (click)="openAddNoteModal()">
     <div class="add-note-circle-header">
       <i class="fa fa-plus"></i>
     </div>
-    <p class="add-note-header-text">Add note</p>
+    <p class="add-note-text">Add note</p>
   </div>
 </div>
 
