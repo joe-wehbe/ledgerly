@@ -81,7 +81,7 @@
               <td>{{ account.income | currency }}</td>
               <td>{{ account.expenses | currency }}</td>
               <td class="action-icons">
-                <img class="edit-icon" src="icons/edit.png" alt="edt">
+                <img class="edit-icon" src="icons/edit.png" alt="edt" (click)="openEditModal(account.id)">
                 <img class="delete-icon" src="icons/delete.png" alt="del" (click)="deleteAccount(account.id)">
               </td>
             </tr>
@@ -115,6 +115,31 @@
         <div class="modal-buttons">
           <button class="cancel-button" (click)="closeModal()">Cancel</button>
           <button type="submit" class="confirm-button">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </form> 
+}
+
+@if (isEditModalOpen) {
+  <form #form="ngForm" (ngSubmit)="onSave(form)">
+    <div class="modal-overlay" (click)="closeEditModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <p class="modal-title">Edit Account</p>      
+        <div class="modal-container">
+            <p class="sentence">Account Name</p>
+            <div class="input-container">
+              <input class="name-input" type="text" name="account-name" placeholder="Ex: cash, wallet, savings..." maxlength="16" [(ngModel)]="accountName" required>
+            </div>
+          <p class="sentence">Account Balance</p>
+          <div class="input-container">
+            <span class="currency-symbol">$</span>
+            <input class="balance-input" type="number" name="amount" placeholder="0.00" [(ngModel)]="initialBalance">
+          </div>
+        </div>
+        <div class="modal-buttons">
+          <button class="cancel-button" (click)="closeEditModal()">Cancel</button>
+          <button type="submit" class="confirm-button">Save</button>
         </div>
       </div>
     </div>

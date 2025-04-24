@@ -20,6 +20,8 @@ export class AccountsPageComponent {
   isModalOpen = false;
   accountName: string = '';
   initialBalance: number = 0;
+  isEditModalOpen = false;
+  editingAccountId: number | null = null;
 
   constructor(
     private accountsService: AccountsService, 
@@ -85,6 +87,38 @@ export class AccountsPageComponent {
       this.snackBarService.warning("Invalid input");
     }
   }
+
+  openEditModal(id: number) {
+    const account = this.accounts.find(a => a.id === id);
+    if (account) {
+      this.editingAccountId = id;
+      this.accountName = account.name;
+      this.initialBalance = account.balance;
+      this.isEditModalOpen = true;
+    }
+  }
+  
+  closeEditModal() {
+    this.isEditModalOpen = false;
+    this.editingAccountId = null;
+    this.accountName = '';
+    this.initialBalance = 0;
+  }
+
+  onSave(form: any) {
+    if (form.valid && this.editingAccountId !== null) {
+      const formattedName = this.accountName.split(' ').filter(word => word.trim() !== '')
+        .map(word => word[0].toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+  
+      this.accountsService.saveAccount(this.editingAccountId, formattedName, this.initialBalance);
+      this.accounts = this.accountsService.getAccounts();
+      this.snackBarService.success("Account updated");
+      this.closeEditModal();
+      
+    } else {
+      this.snackBarService.warning("Invalid input");
+    }
+  }  
 
   deleteAccount(id: number | undefined) {
     this.snackBarService.confirm('Are you sure you want to delete this account and its transactions?', 'Delete')

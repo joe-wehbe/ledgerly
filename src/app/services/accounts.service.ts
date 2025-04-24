@@ -24,6 +24,19 @@ export class AccountsService {
     localStorage.setItem('accounts', JSON.stringify(newAccounts))
   }
 
+  saveAccount(id: number | null, name: string, balance: number) {
+    if (id === null) return;
+  
+    const accounts: Account[] = this.getAccounts();
+    const index = accounts.findIndex(acc => acc.id === id);
+  
+    if (index !== -1) {
+      accounts[index].name = name;
+      accounts[index].balance = balance;
+      localStorage.setItem('accounts', JSON.stringify(accounts));
+    }
+  }  
+
   getTotalBalance() {
     return this.getAccounts().reduce((sum: number, account: Account) => sum + account.balance, 0);
   }
