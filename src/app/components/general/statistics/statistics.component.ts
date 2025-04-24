@@ -17,7 +17,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   lastDate = new Date();
   firstDate = new Date().setDate(this.lastDate.getDay() - 30);
   isLoading = true;
-  view: [number, number] = [1000, 360];
+  view: [number, number] = [1000, 330];
   data: any[] = [];
 
   effect = effect(() => {
@@ -40,7 +40,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
 
   updateChartSize() {
     const parentWidth = document.querySelector('.chart-container')?.clientWidth || 1000;
-    this.view = [parentWidth, 360];
+    this.view = [parentWidth, 330];
   }
 
   fetchData() {
