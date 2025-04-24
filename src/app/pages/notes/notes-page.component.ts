@@ -13,6 +13,7 @@ import { SnackbarService } from '../../services/utility/snackbar.service';
   styleUrl: './notes-page.component.css'
 })
 export class NotesPageComponent implements OnInit{
+  isLoading = true;
   notes: Note[] = [];
   searchQuery: string = '';
   isModalOpen = false;
@@ -25,6 +26,10 @@ export class NotesPageComponent implements OnInit{
   constructor (private notesService: NotesService, private snackBarService: SnackbarService) {}
 
   ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 500);
+
     this.notes = this.notesService.getNotes();
   }
 

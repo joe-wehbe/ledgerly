@@ -103,7 +103,7 @@ tr:nth-child(even) {
 
 td {
   text-align: center;
-  padding: 9px;
+  padding: 11px;
 }
 
 .transactions-table tbody tr:last-child td {

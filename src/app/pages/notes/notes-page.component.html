@@ -22,88 +22,94 @@
   </div>
 </div>
 
-@if (filteredNotes().length > 0) {
-  <div class="cards-grid">
-    @for (note of filteredNotes(); track note.id){
-      <div class="card" (click)="openModal(note)">
-        <div>
-          <div class="note-title">
-            <p>{{ note.title }}</p>
-          </div>
-          <div class="note-content">
-            <p>{{ note.note.length > 200 ? (note.note | slice:0:200) + '...' : note.note }}</p>
-          </div>
-        </div>
-        <div class="note-date">
-          <p> {{ note.date | date }}</p>
-        </div>
-      </div>
-    }
-    @if (searchQuery === '') {
-      <div class="add-note-container" (click)="openAddNoteModal()">
-        <div class="add-note-circle">
-          <i class="fa fa-plus"></i>
-        </div>
-      </div>
-    }
-</div>
+@if (isLoading) {
+  <div class="loading-container">
+    <div class="spinner"></div>
+  </div> 
 } @else {
-  <div class="no-notes-container">
-    <div class="no-notes"> 
-      @if (searchQuery !== '') {
-        <p>No notes match your search</p>
-      } @else {
-        <p>No notes yet, click to add one.</p> <br>
+  @if (filteredNotes().length > 0) {
+    <div class="cards-grid">
+      @for (note of filteredNotes(); track note.id){
+        <div class="card" (click)="openModal(note)">
+          <div>
+            <div class="note-title">
+              <p>{{ note.title }}</p>
+            </div>
+            <div class="note-content">
+              <p>{{ note.note.length > 200 ? (note.note | slice:0:200) + '...' : note.note }}</p>
+            </div>
+          </div>
+          <div class="note-date">
+            <p> {{ note.date | date }}</p>
+          </div>
+        </div>
+      }
+      @if (searchQuery === '') {
         <div class="add-note-container" (click)="openAddNoteModal()">
           <div class="add-note-circle">
             <i class="fa fa-plus"></i>
           </div>
         </div>
       }
-    </div>
   </div>
-}
-
-@if (isModalOpen) {
-  <div class="modal-overlay" (click)="closeModal()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <div class="title-content-container">
-        <div class="note-title">
-          <p>{{ selectedNote?.title }}</p>
-        </div>
-        <div class="note-content">
-          <p>{{ selectedNote?.note }}</p>
-        </div>
-      </div>
-      <div class="delete-date-container">
-        <div class="note-date">
-          <p> {{ selectedNote?.date | date }}</p>
-        </div>
-        <p class="cancel" (click)="closeModal()">Cancel</p>
-        <p class="delete" (click)="deleteNote(selectedNote?.id)">Delete</p>
-      </div>
-    </div>
-  </div>
-}
-
-@if (addNoteModalOpen) {
-  <div class="modal-overlay" (click)="closeAddNoteModal()">
-    <div class="modal-content" (click)="$event.stopPropagation()">
-      <app-add-note class="add-note">
-        <form class="form" #form="ngForm" (ngSubmit)="onSubmit(form)">
-            <div class="upper-container">
-              <p class="card-name">Add Note</p>
+  } @else {
+    <div class="no-notes-container">
+      <div class="no-notes"> 
+        @if (searchQuery !== '') {
+          <p>No notes match your search</p>
+        } @else {
+          <p>No notes yet, click to add one.</p> <br>
+          <div class="add-note-container" (click)="openAddNoteModal()">
+            <div class="add-note-circle">
+              <i class="fa fa-plus"></i>
             </div>
-            <div class="container">
-              <input class="add-note-title" name="title" placeholder="Enter note title..." [(ngModel)]="title" maxlength="28" required>
-              <textarea class="textarea" name="note" placeholder="Write your note here..." [(ngModel)]="note" maxlength="1120" required></textarea>
-              <div class="modal-buttons">
-                <button class="cancel-button" (click)="closeAddNoteModal()">Cancel</button>
-                <button type="submit" class="button">Add</button>
+          </div>
+        }
+      </div>
+    </div>
+  }
+  
+  @if (isModalOpen) {
+    <div class="modal-overlay" (click)="closeModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="title-content-container">
+          <div class="note-title">
+            <p>{{ selectedNote?.title }}</p>
+          </div>
+          <div class="note-content">
+            <p>{{ selectedNote?.note }}</p>
+          </div>
+        </div>
+        <div class="delete-date-container">
+          <div class="note-date">
+            <p> {{ selectedNote?.date | date }}</p>
+          </div>
+          <p class="cancel" (click)="closeModal()">Cancel</p>
+          <p class="delete" (click)="deleteNote(selectedNote?.id)">Delete</p>
+        </div>
+      </div>
+    </div>
+  }
+  
+  @if (addNoteModalOpen) {
+    <div class="modal-overlay" (click)="closeAddNoteModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <app-add-note class="add-note">
+          <form class="form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+              <div class="upper-container">
+                <p class="card-name">Add Note</p>
               </div>
-            </div>
-        </form>
-      </app-add-note>
+              <div class="container">
+                <input class="add-note-title" name="title" placeholder="Enter note title..." [(ngModel)]="title" maxlength="28" required>
+                <textarea class="textarea" name="note" placeholder="Write your note here..." [(ngModel)]="note" maxlength="1120" required></textarea>
+                <div class="modal-buttons">
+                  <button class="cancel-button" (click)="closeAddNoteModal()">Cancel</button>
+                  <button type="submit" class="button">Add</button>
+                </div>
+              </div>
+          </form>
+        </app-add-note>
+      </div>
     </div>
-  </div>
+  }
 }
