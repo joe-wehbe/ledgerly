@@ -144,9 +144,11 @@
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  height: 81.9vh;
   gap: 10px;
   padding-right: 10px;
+  overflow-y: scroll;
 }
 
 .card {
@@ -158,6 +160,7 @@
   font-size: 18px;
   border-radius: 10px;
   background: var(--cards-background);
+  overflow: hidden;
 }
 
 .card:hover {
@@ -172,6 +175,10 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: var(--note-title-background);
+}
+
+.note-title p, .note-content p, .note-date p {
+  margin: 0;
 }
 
 .note-content, .note-date {
@@ -394,8 +401,10 @@
   background-color: rgb(230, 230, 230);
 }
 
-.note-title p {
-  margin: 0;
+@media (max-width: 1500px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 1300px) {
