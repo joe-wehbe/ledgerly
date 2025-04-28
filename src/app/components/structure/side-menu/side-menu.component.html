@@ -31,7 +31,7 @@
       </a>
     </div>
 
-    <div class="export-data-container">
+    <div class="export-data-container" (click)="openDownloadModal()">
       <div class="title">
         <p class="export-text">Export Transactions</p>
       </div>
@@ -39,3 +39,36 @@
     </div>
   </div>
 </div>
+
+@if (isDownloadModalOpen) {
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div class="modal-overlay" (click)="closeDownloadModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <p class="modal-title">Export Transactions</p>      
+        <div class="modal-container">
+          <p class="sentence">Account</p>
+          <select id="account" name="account" [(ngModel)]="selectedAccountId" required>
+            <option value=0>All Accounts</option>
+            @for (account of accounts; track account.id) {
+              <option value="{{ account.id }}">{{ account.name }}</option>
+            }
+          </select>
+          <p class="sentence">Transaction type</p>
+          <select id="type" name="type" [(ngModel)]="selectedType" required>
+            <option value="all">Income & Expenses</option>
+            <option value="income">Income</option>
+            <option value="expense">Expenses</option>
+          </select>
+          <p class="sentence">Start date</p>
+          <input type="date" id="startDate" name="startDate" [(ngModel)]="startDate">
+          <p class="sentence">End date</p>
+          <input type="date" id="endDate" name="endDate" [(ngModel)]="endDate">
+        </div>
+        <div class="modal-buttons">
+          <button class="cancel-button" (click)="closeDownloadModal()">Cancel</button>
+          <button type="submit" class="confirm-button">Export</button>
+        </div>
+      </div>
+    </div>
+  </form> 
+}
