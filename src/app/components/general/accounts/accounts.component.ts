@@ -31,7 +31,7 @@ export class AccountsComponent implements OnInit {
     }, 500);
 
     this.accountsService.accounts$.subscribe(accounts => {
-      this.accounts = accounts;
+      this.accounts = accounts.slice(0,6);
     });
     this.selectAll();
   }

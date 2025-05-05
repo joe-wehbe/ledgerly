@@ -31,7 +31,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.accounts = this.accountsService.getAccounts();
+    this.accountsService.accounts$.subscribe(accounts => {
+      this.accounts = accounts;
+    });
   }
 
   toggleTheme(): void {

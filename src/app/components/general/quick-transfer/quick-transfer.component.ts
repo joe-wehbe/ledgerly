@@ -24,7 +24,10 @@ export class QuickTransferComponent implements OnInit{
   ) { }
 
   ngOnInit() {
-    this.accounts = this.accountsService.getAccounts();
+    this.accountsService.accounts$.subscribe(accounts => {
+      this.accounts = accounts;
+    });    
+    
     if (this.accounts.length > 0) {
       this.fromAccountId = this.accounts[0].id;
       this.toAccountId = this.accounts.length > 1 ? this.accounts[1].id : this.accounts[0].id;
