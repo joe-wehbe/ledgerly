@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, inject, input, effect } from '@angular/core';
-import { NgxChartsModule, Color, ScaleType } from '@swimlane/ngx-charts';
 import { TransactionsService } from '../../../services/transactions.service';
 import { Transaction } from '../../../models/transaction.model';
 import { Account } from '../../../models/account.model';
+import { NgxChartsModule, Color, ScaleType } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-statistics',
@@ -25,7 +25,9 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   });
 
   ngOnInit() {
-    this.fetchData();
+    this.transactionsService.transactions$.subscribe(() => {
+      this.fetchData();
+    });
 
     setTimeout(() => {
       this.isLoading = false;
@@ -54,7 +56,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
     if (this.selectedAccount()?.id !== 0) {
       filteredTransactions = transactions.filter((txn: Transaction) => txn.account.id === this.selectedAccount()?.id)
     }
-    
+
     for (const txn of filteredTransactions) {
       if (txn.amount == null) continue;
       const dateObj = txn.date instanceof Date ? txn.date : new Date(txn.date);

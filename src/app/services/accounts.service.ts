@@ -39,7 +39,6 @@ export class AccountsService {
     this.accountsSubject.next(accounts);
   }
 
-  // Get totals
   getTotalBalance() {
     return this.getAccounts().reduce((sum, acc) => sum + acc.balance, 0);
   }
