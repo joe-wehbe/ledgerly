@@ -120,7 +120,7 @@ export class AccountsPageComponent {
     }
   }  
 
-  deleteAccount(id: number | undefined) {
+  deleteAccount(id: number) {
     this.snackBarService.confirm('Are you sure you want to delete this account and its transactions?', 'Delete')
     .subscribe(() => {
       this.accountsService.deleteAccount(id);
