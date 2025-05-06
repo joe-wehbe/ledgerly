@@ -13,8 +13,10 @@ export class TransactionsService {
   accounts: Account[] = [];
 
   constructor(private accountsService: AccountsService) { 
-    this.accounts = this.accountsService.getAccounts();
-  }
+    this.accountsService.accounts$.subscribe(accounts => {
+      this.accounts = accounts;
+    });
+  }  
 
   private updateTransactions() {
     localStorage.setItem('transactions', JSON.stringify(this.transactionsSubject.getValue()));
