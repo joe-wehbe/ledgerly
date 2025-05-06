@@ -2,12 +2,12 @@
   display: grid;
   grid-template-columns: 70% 29.3%;
   gap: 10px;
+  height: 100%;
 }
 
 .left-column, .right-column {
   display: flex;
   flex-direction: column;
-  height: 89vh;
   gap: 10px;
 }
 

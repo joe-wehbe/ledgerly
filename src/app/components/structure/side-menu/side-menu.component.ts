@@ -20,7 +20,6 @@ export class SideMenuComponent implements OnInit {
   accounts: Account[] = []
   selectedAccountId: number | null = 0;
   isDownloadModalOpen = false;
-  // selectedAccount: 'All accounts' | Account | null = 'All accounts';
   selectedType: 'all' | 'income' | 'expense' = 'all'
   startDate: string = '';
   endDate: string = '';

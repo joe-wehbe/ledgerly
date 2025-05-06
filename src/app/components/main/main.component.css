@@ -1,7 +1,7 @@
 .layout-grid {
-  min-height: 98vh;
   display: grid;
   grid-template-columns: 215px 1fr;
+  min-height: 100vh;
 }
 
 .left-side-container {
@@ -9,8 +9,18 @@
   background-color: var(--header-menu-background);
 }
 
+.right-side-container, .left-side-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu {
+  flex: 1;
+}
+
 .router-container {
   margin: 10px;
+  flex: 1;
 }
 
 @media (max-width: 1200px) {
