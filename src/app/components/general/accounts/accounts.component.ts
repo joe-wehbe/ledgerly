@@ -5,10 +5,11 @@ import { Account } from '../../../models/account.model';
 import { CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SnackbarService } from '../../../services/utility/snackbar.service';
+import { FormatNumberPipe } from '../../../pipes/format-number.pipe';
 
 @Component({
   selector: 'app-accounts',
-  imports: [FormsModule, RouterLink, CurrencyPipe],
+  imports: [FormsModule, RouterLink, FormatNumberPipe],
   templateUrl: './accounts.component.html',
   styleUrl: './accounts.component.css'
 })

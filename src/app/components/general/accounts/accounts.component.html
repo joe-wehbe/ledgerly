@@ -20,7 +20,7 @@
       @for (account of accounts; track account.id) {
         <div class="account" [class.selected]="selectedId === account.id" (click)="selectAccount(account.id)">
           <div class="account-name">{{ account.name }}</div>
-          <div class="amount">{{ account.balance | currency }} </div>
+          <div class="amount">{{ account.balance | formatNumber }} </div>
         </div>
       }
       @if (accounts.length < 6) {

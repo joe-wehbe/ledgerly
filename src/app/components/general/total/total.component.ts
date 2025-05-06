@@ -1,10 +1,11 @@
 import { Component, input } from '@angular/core';
 import { Account } from '../../../models/account.model';
 import { CurrencyPipe } from '@angular/common';
+import { FormatNumberPipe } from '../../../pipes/format-number.pipe';
 
 @Component({
   selector: 'app-total',
-  imports: [CurrencyPipe],
+  imports: [FormatNumberPipe],
   templateUrl: './total.component.html',
   styleUrl: './total.component.css'
 })
