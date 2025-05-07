@@ -2,7 +2,7 @@
   <p class="notes-number">{{ filteredNotes().length === 1 ? '1 Note' : filteredNotes().length + ' Notes' }}</p>
   <div class="search-wrapper">
     <i class="fa fa-search search-icon"></i>
-    <input type="text" placeholder="Search account..." class="search-bar" [(ngModel)]="searchQuery">
+    <input type="text" placeholder="Search note..." class="search-bar" [(ngModel)]="searchQuery">
     <span class="search-cancel" (click)="cancelQuery()">Cancel</span>
   </div>
   <div class="sort-container">
