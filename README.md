@@ -2,13 +2,13 @@
 Ledgerly is a comprehensive and user-friendly website where you can manage and keep track of your finances. It is built using Angular without any server-side implementation.
 
 # Website Preview
-|Dashboard|Transactions|
-|---------|------------|
-|![image](https://github.com/user-attachments/assets/75fee014-8fd6-41e6-afa4-dc37c191ad68)|![image](https://github.com/user-attachments/assets/b75daf59-1b0d-4884-b0d3-3d98ddf2607f)|
+|Dashboard|
+|---------|
+|![image](https://github.com/user-attachments/assets/75fee014-8fd6-41e6-afa4-dc37c191ad68)|
 
-|Accounts|Notes|
-|--------|-----|
-|![image](https://github.com/user-attachments/assets/3d73e247-6dcb-459c-a36b-fecc95d55cfe)|![image](https://github.com/user-attachments/assets/a2eb35d0-0448-41e9-b0e4-116e8cf5a0bd)|
+|Transactions|
+|------------|
+|![image](https://github.com/user-attachments/assets/b75daf59-1b0d-4884-b0d3-3d98ddf2607f)|
 
 # How to run the project
 ## Running the project locally
